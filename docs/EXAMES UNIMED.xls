@@ -1,0 +1,2831 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Author</Author>
+  <LastAuthor>Author</LastAuthor>
+  <Created>2026-08-27T17:00:49Z</Created>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>7305</WindowHeight>
+  <WindowWidth>20490</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Font ss:FontName="Arial" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Plan1">
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="691" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:AutoFitWidth="0" ss:Width="120"/>
+   <Column ss:Width="528"/>
+   <Row ss:AutoFitHeight="0" ss:Height="12.1875">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mnemônico</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Descrição</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ATTMPOS</Data></Cell>
+    <Cell><Data ss:Type="String"> ÁCIDO TRANS-MUCÔNICO (PÓS-JORNADA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ATTM</Data></Cell>
+    <Cell><Data ss:Type="String"> ÁCIDO TRANS-MUCÔNICO (PRÉ-JORNADA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.1875">
+    <Cell><Data ss:Type="String">LINF</Data></Cell>
+    <Cell><Data ss:Type="String">(COBRANÇA) CD4 E CD8 + CD3 - SUBPOPULACAO LINFOCITARIA</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD3</Data></Cell>
+    <Cell><Data ss:Type="String">(COBRANÇA) CD4 E CD8 + CD3 - SUBPOPULACAO LINFOCITARIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD19C</Data></Cell>
+    <Cell><Data ss:Type="String">(COBRANÇA) TIPAGEM DE LINFOCITOS CD2 E CD19 + CD3, CD4 E CD8</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD2</Data></Cell>
+    <Cell><Data ss:Type="String">(COBRANÇA)TIPAGEM LINFOCITOS CD2 E CD19 + CD3, CD4 E CD8 </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VITD1</Data></Cell>
+    <Cell><Data ss:Type="String">1,25 DIHIDROXI VITAMINA D3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">17PG</Data></Cell>
+    <Cell><Data ss:Type="String">17 ALFA - HIDROXIPROGESTERONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">17PGN</Data></Cell>
+    <Cell><Data ss:Type="String">17 ALFA - HIDROXIPROGESTERONA NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">E2</Data></Cell>
+    <Cell><Data ss:Type="String">17 BETA ESTRADIOL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">17-KS</Data></Cell>
+    <Cell><Data ss:Type="String">17 CETOSTEROIDES NEUTROS TOTAIS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HEXA</Data></Cell>
+    <Cell><Data ss:Type="String">2,5 HEXANODIONA URINÁRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ACIND</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO 5 HIDROXI INDOLACÉTICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CITRA</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO CÍTRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AFENIL</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO FENILGLIOXÍLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FOL</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO FÓLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FOLIHE</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO FÓLICO ERITROCITÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HIP</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO HIPÚRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HOMOVA</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO HOMOVANÍLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LACTATO</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO LÁTICO (LACTATO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MANDEL</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO MANDÉLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MALO</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO METIL MALÔNICO - SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MALONI</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO METIL MALÔNICO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">METHIP</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO METIL-HIPÚRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OXAU</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO OXÁLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AC-OXA</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO OXÁLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">URICO</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO ÚRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">URICO24</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO ÚRICO - URINA 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">URICOLS</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO ÚRICO LÍQUIDO SINOVIAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">URICOUR</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO ÚRICO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VAL</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO VALPRÓICO - VALPROATO DE SÓDIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VMA</Data></Cell>
+    <Cell><Data ss:Type="String">ÁCIDO VANIL MANDÉLICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ACTH</Data></Cell>
+    <Cell><Data ss:Type="String">ACTH - HORMÔNIO ADRENOCORTICOTRÓFICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALBUMINA</Data></Cell>
+    <Cell><Data ss:Type="String">ALBUMINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALDOLASE</Data></Cell>
+    <Cell><Data ss:Type="String">ALDOLASE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALDO</Data></Cell>
+    <Cell><Data ss:Type="String">ALDOSTERONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">A1A</Data></Cell>
+    <Cell><Data ss:Type="String">ALFA 1 ANTITRIPSINA (A1A)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">A1G</Data></Cell>
+    <Cell><Data ss:Type="String">ALFA 1 GLICOPROTEÍNA ÁCIDA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FETO</Data></Cell>
+    <Cell><Data ss:Type="String">ALFA FETOPROTEÍNA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LACTOA</Data></Cell>
+    <Cell><Data ss:Type="String">ALFA LACTOALBUMINA - F76</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AL</Data></Cell>
+    <Cell><Data ss:Type="String">ALUMÍNIO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALU</Data></Cell>
+    <Cell><Data ss:Type="String">ALUMÍNIO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALU24</Data></Cell>
+    <Cell><Data ss:Type="String">ALUMÍNIO URINÁRIO - URINA 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMIL</Data></Cell>
+    <Cell><Data ss:Type="String">AMILASE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMILDIV</Data></Cell>
+    <Cell><Data ss:Type="String">AMILASE - Diversos Materiais</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMILU</Data></Cell>
+    <Cell><Data ss:Type="String">AMILASE URINÁRIA (URINA 24 HORAS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ANDRO</Data></Cell>
+    <Cell><Data ss:Type="String">ANDROSTENEDIONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ANTIBI</Data></Cell>
+    <Cell><Data ss:Type="String">ANTIBIOGRAMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LUP</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICOAGULANTE LÚPICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ACET</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPO ANTI-RECEPTOR DE ACETILCONINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MIT</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI - MITOCÔNDRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COXG</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI COXSACKIEVIRUS B IGG </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COXM</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI COXSACKIEVIRUS B IGM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HDV</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI HDV</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HISTONA</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI HISTONA / CROMATINA </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ILHOTA</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI ILHOTA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">21-OH</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTI-CÓRTEX DA SUPRA RENAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TTG</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS ANTITRANSGLUTAMINASE IgA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BOR-G</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS IgG ANTI BORRELIA BURGDORFERI (LYME)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BOR-M</Data></Cell>
+    <Cell><Data ss:Type="String">ANTICORPOS IgM ANTI BORRELIA BURGDORFERI (LYME)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HDVAG</Data></Cell>
+    <Cell><Data ss:Type="String">ANTÍGENO HEPATITE D [HDV-AG]</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AT3</Data></Cell>
+    <Cell><Data ss:Type="String">ANTITROMBINA III</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">APOA</Data></Cell>
+    <Cell><Data ss:Type="String">APOLIPOPROTEÍNA A-1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">APOB</Data></Cell>
+    <Cell><Data ss:Type="String">APOLIPOPROTEÍNA B</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ARSENICO</Data></Cell>
+    <Cell><Data ss:Type="String">ARSÊNICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ASU</Data></Cell>
+    <Cell><Data ss:Type="String">ARSÊNICO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ASLO</Data></Cell>
+    <Cell><Data ss:Type="String">ASLO - ANTIESTREPTOLISINA &quot;O&quot;</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ASPERG</Data></Cell>
+    <Cell><Data ss:Type="String">ASPERGILLUS SP, ANTI </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RENINA</Data></Cell>
+    <Cell><Data ss:Type="String">ATIVIDADE PLASMÁTICA DA RENINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD20</Data></Cell>
+    <Cell><Data ss:Type="String">AVALIAÇÃO DE CD20 (LINFÓCITO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BAAR</Data></Cell>
+    <Cell><Data ss:Type="String">BAAR - BACILOSCOPIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WBK</Data></Cell>
+    <Cell><Data ss:Type="String">BAAR - MICOBACTÉRIAS, CULTURA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BAC</Data></Cell>
+    <Cell><Data ss:Type="String">BACTERIOSCOPIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BETA2M</Data></Cell>
+    <Cell><Data ss:Type="String">BETA 2 MICROGLOBULINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LACTOB</Data></Cell>
+    <Cell><Data ss:Type="String">BETA LACTOGLOBULINA - F77</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CO2</Data></Cell>
+    <Cell><Data ss:Type="String">BICARBONATO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BILI</Data></Cell>
+    <Cell><Data ss:Type="String">BILIRRUBINAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BIOTN</Data></Cell>
+    <Cell><Data ss:Type="String">BIOTINIDASE NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BIOT</Data></Cell>
+    <Cell><Data ss:Type="String">BIOTINIDASE QUANTITATIVO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BLASTO</Data></Cell>
+    <Cell><Data ss:Type="String">BLASTOMICOSE SUL AMERICANA </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LYMEGM</Data></Cell>
+    <Cell><Data ss:Type="String">BORRELIA BURGDORFERI (Doença de Lyme) IgG e IgM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">C3</Data></Cell>
+    <Cell><Data ss:Type="String">C3, COMPLEMENTO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">C4</Data></Cell>
+    <Cell><Data ss:Type="String">C4, COMPLEMENTO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CA125</Data></Cell>
+    <Cell><Data ss:Type="String">CA 125</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CA153</Data></Cell>
+    <Cell><Data ss:Type="String">CA 15-3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CA199</Data></Cell>
+    <Cell><Data ss:Type="String">CA 19-9</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CA72</Data></Cell>
+    <Cell><Data ss:Type="String">CA 72-4</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FCL</Data></Cell>
+    <Cell><Data ss:Type="String">CADEIA KAPPA/LAMBDA LEVE LIVRE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAD</Data></Cell>
+    <Cell><Data ss:Type="String">CÁDMIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAD24</Data></Cell>
+    <Cell><Data ss:Type="String">CADMIO - URINA 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CADU</Data></Cell>
+    <Cell><Data ss:Type="String">CÁDMIO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CALCIO</Data></Cell>
+    <Cell><Data ss:Type="String">CÁLCIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAION</Data></Cell>
+    <Cell><Data ss:Type="String">CÁLCIO IÔNICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAUR</Data></Cell>
+    <Cell><Data ss:Type="String">CÁLCIO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CA12</Data></Cell>
+    <Cell><Data ss:Type="String">CÁLCIO URINÁRIO - URINA 12 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CA24</Data></Cell>
+    <Cell><Data ss:Type="String">CÁLCIO URINÁRIO - URINA 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CCT</Data></Cell>
+    <Cell><Data ss:Type="String">CALCITONINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CALCULO</Data></Cell>
+    <Cell><Data ss:Type="String">CÁLCULO, ANÁLISE FÍSICO QUÍMICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CALPRO</Data></Cell>
+    <Cell><Data ss:Type="String">CALPROTECTINA FECAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLCF</Data></Cell>
+    <Cell><Data ss:Type="String">CAPACIDADE LIVRE DE COMBINAÇÃO DO FERRO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CTCF</Data></Cell>
+    <Cell><Data ss:Type="String">CAPACIDADE TOTAL DE COMBINAÇÃO DO FERRO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAHB</Data></Cell>
+    <Cell><Data ss:Type="String">CARBOXIHEMOGLOBINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CARDA</Data></Cell>
+    <Cell><Data ss:Type="String">CARDIOLIPINA IgA, AUTO ANTICORPOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CARDG</Data></Cell>
+    <Cell><Data ss:Type="String">CARDIOLIPINA IgG, AUTO ANTICORPOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CARDM</Data></Cell>
+    <Cell><Data ss:Type="String">CARDIOLIPINA IgM, AUTO ANTICORPOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CARGAHBV</Data></Cell>
+    <Cell><Data ss:Type="String">CARGA VIRAL DE HBV - VÍRUS DA HEPATITE B - DNA VIRAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CATE</Data></Cell>
+    <Cell><Data ss:Type="String">CATECOLAMINAS - FRAÇÕES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CATE24</Data></Cell>
+    <Cell><Data ss:Type="String">CATECOLAMINAS - FRAÇÕES (URINA DE 24 HORAS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAXG</Data></Cell>
+    <Cell><Data ss:Type="String">CAXUMBA IGG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAXM</Data></Cell>
+    <Cell><Data ss:Type="String">CAXUMBA IGM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CCP</Data></Cell>
+    <Cell><Data ss:Type="String">CCP, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD4</Data></Cell>
+    <Cell><Data ss:Type="String">CD4 - SUBPOPULAÇÃO LINFOCITÁRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD8</Data></Cell>
+    <Cell><Data ss:Type="String">CD4 E CD8 + CD3 - SUBPOPULACAO LINFOCITARIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CEA</Data></Cell>
+    <Cell><Data ss:Type="String">CEA - ANTÍGENO CARCINOEMBRIONÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PARIE</Data></Cell>
+    <Cell><Data ss:Type="String">CÉLULA PARIETAL, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NK</Data></Cell>
+    <Cell><Data ss:Type="String">CÉLULAS NK</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CENTRO</Data></Cell>
+    <Cell><Data ss:Type="String">CENTRÔMERO, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CERULO</Data></Cell>
+    <Cell><Data ss:Type="String">CERULOPLASMINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TCG</Data></Cell>
+    <Cell><Data ss:Type="String">CHAGAS, TRYPANOSOMA CRUZI IgG, ANTICORPOS ANTI </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TCEL</Data></Cell>
+    <Cell><Data ss:Type="String">CHAGAS, TRYPANOSOMA CRUZI IgG, ANTICORPOS ANTI </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TCM</Data></Cell>
+    <Cell><Data ss:Type="String">CHAGAS, TRYPANOSOMA CRUZI IgM, ANTICORPOS ANTI </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CHIKU</Data></Cell>
+    <Cell><Data ss:Type="String">CHIKUNGUNYA IgG E IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLPN-G</Data></Cell>
+    <Cell><Data ss:Type="String">CHLAMYDIA PNEUMONIAE IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CHLPIM</Data></Cell>
+    <Cell><Data ss:Type="String">CHLAMYDIA PNEUMONIAE IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLAA</Data></Cell>
+    <Cell><Data ss:Type="String">CHLAMYDIA TRACHOMATIS IgA, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLAG</Data></Cell>
+    <Cell><Data ss:Type="String">CHLAMYDIA TRACHOMATIS IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLAM</Data></Cell>
+    <Cell><Data ss:Type="String">CHLAMYDIA TRACHOMATIS IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PB</Data></Cell>
+    <Cell><Data ss:Type="String">CHUMBO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PBU</Data></Cell>
+    <Cell><Data ss:Type="String">CHUMBO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CICLO</Data></Cell>
+    <Cell><Data ss:Type="String">CICLOSPORINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CIST24</Data></Cell>
+    <Cell><Data ss:Type="String">Cistina - Urina de 24 horas</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CITMAMA</Data></Cell>
+    <Cell><Data ss:Type="String">CITOLOGIA DE SECREÇÃO DE MAMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CITNAS</Data></Cell>
+    <Cell><Data ss:Type="String">CITOLOGIA NASAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CMVA</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMEGALOVÍRUS , TESTE DE AVIDEZ IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CMVG</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMEGALOVÍRUS IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CMVM</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMEGALOVÍRUS IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CMVN</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMEGALOVIRUS NEONATAL IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CMVQT</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMEGALOVÍRUS, PCR QUANTITATIVO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CITASC</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMETRIA E CITOLOGIA DE LÍQUIDO ASCÍTICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CITLP</Data></Cell>
+    <Cell><Data ss:Type="String">CITOMETRIA E CITOLOGIA DE LÍQUIDO PLEURAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CIT24</Data></Cell>
+    <Cell><Data ss:Type="String">CITRATO URINÁRIO - 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CREAC</Data></Cell>
+    <Cell><Data ss:Type="String">CLEARENCE DE CREATININA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">UREC</Data></Cell>
+    <Cell><Data ss:Type="String">CLEARENCE DE URÉIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLONA</Data></Cell>
+    <Cell><Data ss:Type="String">CLONAZEPAM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CL</Data></Cell>
+    <Cell><Data ss:Type="String">CLORO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CL24</Data></Cell>
+    <Cell><Data ss:Type="String">CLORO URINÁRIO (24 horas)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLU</Data></Cell>
+    <Cell><Data ss:Type="String">Cloro Urinário - Amostra Isolada</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLOSTRI</Data></Cell>
+    <Cell><Data ss:Type="String">CLOSTRIDIUM DIFFICILE - TOXINA A E B</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COAG</Data></Cell>
+    <Cell><Data ss:Type="String">COAGULOGRAMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CU</Data></Cell>
+    <Cell><Data ss:Type="String">COBRE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CUU</Data></Cell>
+    <Cell><Data ss:Type="String">COBRE URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CU24</Data></Cell>
+    <Cell><Data ss:Type="String">Cobre Urinário (Urina 24 horas)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HDL</Data></Cell>
+    <Cell><Data ss:Type="String">COLESTEROL HDL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LDL</Data></Cell>
+    <Cell><Data ss:Type="String">COLESTEROL LDL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COL</Data></Cell>
+    <Cell><Data ss:Type="String">COLESTEROL TOTAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COLPL</Data></Cell>
+    <Cell><Data ss:Type="String">COLESTEROL TOTAL - LÍQUIDO PLEURAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VLDL</Data></Cell>
+    <Cell><Data ss:Type="String">COLESTEROL VLDL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COLINE</Data></Cell>
+    <Cell><Data ss:Type="String">COLINESTERASE ERITROCITÁRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COLINP</Data></Cell>
+    <Cell><Data ss:Type="String">COLINESTERASE PLASMÁTICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CH50</Data></Cell>
+    <Cell><Data ss:Type="String">COMPLEMENTO DO CH-50</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CH100</Data></Cell>
+    <Cell><Data ss:Type="String">COMPLEMENTO SERICO TOTAL - CH-100</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CS11</Data></Cell>
+    <Cell><Data ss:Type="String">COMPOSTO S 11 DESOXI-CORTISOL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PLAQ</Data></Cell>
+    <Cell><Data ss:Type="String">CONTAGEM DE PLAQUETAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RETIC</Data></Cell>
+    <Cell><Data ss:Type="String">CONTAGEM DE RETICULÓCITOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COOMBS</Data></Cell>
+    <Cell><Data ss:Type="String">COOMBS DIRETO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PAI</Data></Cell>
+    <Cell><Data ss:Type="String">COOMBS INDIRETO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WFEZ</Data></Cell>
+    <Cell><Data ss:Type="String">COPROCULTURA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FUNCIO</Data></Cell>
+    <Cell><Data ss:Type="String">COPROLÓGICO FUNCIONAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CPFU</Data></Cell>
+    <Cell><Data ss:Type="String">COPROPORFIRINAS, PESQUISA NA URINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CPF</Data></Cell>
+    <Cell><Data ss:Type="String">COPROPORFIRINAS, PESQUISA NAS FEZES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORT</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORT16</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL - 16 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTU24</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL - URINA DE 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTD</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL APÓS SUPRESSÃO COM DEXAMETASONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTL</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL LIVRE - URINA DE 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTS</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL SALIVAR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTS11</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL SALIVAR - 11 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTS16</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL SALIVAR - 16 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTS23</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL SALIVAR - 23 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORTS8</Data></Cell>
+    <Cell><Data ss:Type="String">CORTISOL SALIVAR - 8 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CINA</Data></Cell>
+    <Cell><Data ss:Type="String">CREATINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CREA</Data></Cell>
+    <Cell><Data ss:Type="String">CREATININA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CREAUR</Data></Cell>
+    <Cell><Data ss:Type="String">CREATININA URINÁRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CREA24</Data></Cell>
+    <Cell><Data ss:Type="String">CREATININA URINÁRIA - 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CPK</Data></Cell>
+    <Cell><Data ss:Type="String">CREATINOFOSFOQUINASE - CPK</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CKMB</Data></Cell>
+    <Cell><Data ss:Type="String">CREATINOFOSFOQUINASE FRAÇÃO MB  - CKMB</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CRIOA</Data></Cell>
+    <Cell><Data ss:Type="String">CRIOAGLUTININAS - PESQUISA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CRIOG</Data></Cell>
+    <Cell><Data ss:Type="String">CRIOGLOBULINAS - PESQUISA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CRAAN</Data></Cell>
+    <Cell><Data ss:Type="String">Cromatografia Qualitativa de Aminoacidos- NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CR</Data></Cell>
+    <Cell><Data ss:Type="String">CROMO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CRU</Data></Cell>
+    <Cell><Data ss:Type="String">CROMO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CRY</Data></Cell>
+    <Cell><Data ss:Type="String">Cryptosporidium, Pesquisa</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WCUL</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA - IDENTIFICAÇÃO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WURE</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA DE SECREÇÃO URETRAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WVAG</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA DE SECREÇÃO VAGINAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WORO</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA PARA IDENTIFICAÇÃO DE BACTÉRIAS  </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WMICO</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA PARA MICOPLASMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WBETAR</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA SELETIVA PARA STREPTOCOCCUS GRUPO B</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WBETA</Data></Cell>
+    <Cell><Data ss:Type="String">CULTURA SELETIVA PARA STREPTOCOCCUS GRUPO B</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GTT</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA GLICÊMICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GTTI</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA GLICÊMICA BASAL + 1 HORA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GTT3</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA GLICÊMICA PROLONGADA - 3 DOSAGENS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GTT4</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA GLICÊMICA PROLONGADA - 4 DOSAGENS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GTT5</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA GLICÊMICA PROLONGADA - 5 DOSAGENS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GTT6</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA GLICÊMICA PROLONGADA - 6 DOSAGENS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">INSUL3</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA INSULÍNICA - 3 DOSAGENS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CGI3D</Data></Cell>
+    <Cell><Data ss:Type="String">CURVA INSULÍNICA /BASAL + 2 TEMPOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DIMERO</Data></Cell>
+    <Cell><Data ss:Type="String">D - DÍMERO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DENGG</Data></Cell>
+    <Cell><Data ss:Type="String">DENGUE IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DENGM</Data></Cell>
+    <Cell><Data ss:Type="String">DENGUE IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DHL</Data></Cell>
+    <Cell><Data ss:Type="String">DESIDROGENASE LÁTICA - DHL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DHLLP</Data></Cell>
+    <Cell><Data ss:Type="String">DESIDROGENASE LÁTICA - Líquido Pleural</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DHLLS</Data></Cell>
+    <Cell><Data ss:Type="String">DESIDROGENASE LÁTICA - Líquido Sinovial</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COVIFLU</Data></Cell>
+    <Cell><Data ss:Type="String">DETECÇÃO DE ANTÍGENOS VIRAIS DO SARS-CoV-2 ; INFLUENZA A; INFLUENZA B</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COVIDAG</Data></Cell>
+    <Cell><Data ss:Type="String">DETECÇÃO DO ANTÍGENO SARS-COV-COV2 COVID-19 Ag</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DHE</Data></Cell>
+    <Cell><Data ss:Type="String">DHEA - DEHIDROEPIANDROSTERONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DIG</Data></Cell>
+    <Cell><Data ss:Type="String">DIGOXINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DHT</Data></Cell>
+    <Cell><Data ss:Type="String">DIHIDROTESTOSTERONA - DHT</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DNA</Data></Cell>
+    <Cell><Data ss:Type="String">DNA (DUPLA HÉLICE) OU NATIVO, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DNAS</Data></Cell>
+    <Cell><Data ss:Type="String">DNA (HÉLICE SIMPLES), ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BETAQUAN</Data></Cell>
+    <Cell><Data ss:Type="String">DOSAGEM DE GONADOTROFINA CORIÔNICA BETA SÉRICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BETALAC</Data></Cell>
+    <Cell><Data ss:Type="String">DOSAGEM DE GONADOTROFINA CORIÔNICA BETA SÉRICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EHB</Data></Cell>
+    <Cell><Data ss:Type="String">ELETROFORESE DE HEMOGLOBINAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ELP</Data></Cell>
+    <Cell><Data ss:Type="String">ELETROFORESE DE LIPOPROTEINAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EPR</Data></Cell>
+    <Cell><Data ss:Type="String">ELETROFORESE DE PROTEÍNAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EPRU24</Data></Cell>
+    <Cell><Data ss:Type="String">Eletroforese de Proteinas Urina 24 horas</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ENDOA</Data></Cell>
+    <Cell><Data ss:Type="String">ENDOMÍSIO IgA, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ENDOG</Data></Cell>
+    <Cell><Data ss:Type="String">ENDOMÍSIO IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ENDOM</Data></Cell>
+    <Cell><Data ss:Type="String">ENDOMÍSIO IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EBG</Data></Cell>
+    <Cell><Data ss:Type="String">EPSTEIN BARR IgG, ANTICORPOS ANTI (VCA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EBM</Data></Cell>
+    <Cell><Data ss:Type="String">EPSTEIN BARR IgM, ANTICORPOS ANTI (VCA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ERITRO</Data></Cell>
+    <Cell><Data ss:Type="String">ERITROPOETINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WESP</Data></Cell>
+    <Cell><Data ss:Type="String">ESPERMOCULTURA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ESP</Data></Cell>
+    <Cell><Data ss:Type="String">ESPERMOGRAMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ESPVAS</Data></Cell>
+    <Cell><Data ss:Type="String">Espermograma pós vasectomia</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ESTRIOL</Data></Cell>
+    <Cell><Data ss:Type="String">ESTRIOL LIVRE - E3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ESTRONA</Data></Cell>
+    <Cell><Data ss:Type="String">ESTRONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HEMOPLUS</Data></Cell>
+    <Cell><Data ss:Type="String">ESTUDO GENETICO DA HEMOCROMATOSE PLUS </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HEMOCRO1</Data></Cell>
+    <Cell><Data ss:Type="String">Estudo Genétido da Mutação S65C para Hemocromatose</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DQ2</Data></Cell>
+    <Cell><Data ss:Type="String">ESTUDO MOLECULAR DE DQA0501 E DQB0201</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DQ8</Data></Cell>
+    <Cell><Data ss:Type="String">Estudo Molecular HLA DQ8 - DQA1*0301/DQB1*0302</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FRESCO</Data></Cell>
+    <Cell><Data ss:Type="String">EXAME DIRETO À FRESCO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FAN</Data></Cell>
+    <Cell><Data ss:Type="String">FATOR ANTINÚCLEO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VW</Data></Cell>
+    <Cell><Data ss:Type="String">FATOR DE VON WILLEBRAND (ANTIGÊNICO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LATEX</Data></Cell>
+    <Cell><Data ss:Type="String">FATOR REUMATÓIDE, TESTE DO LÁTEX</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RH</Data></Cell>
+    <Cell><Data ss:Type="String">FATOR RH</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEIDEN</Data></Cell>
+    <Cell><Data ss:Type="String">Fator V de Leiden</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PKU</Data></Cell>
+    <Cell><Data ss:Type="String">Fenilalanina (PKU)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FENILU</Data></Cell>
+    <Cell><Data ss:Type="String">Fenilcetonúria, Pesquisa</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FENIT</Data></Cell>
+    <Cell><Data ss:Type="String">FENITOÍNA (HIDANTOÍNA, DIFENILHIDANTOÍNA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FENO</Data></Cell>
+    <Cell><Data ss:Type="String">FENOBARBITAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FENOL</Data></Cell>
+    <Cell><Data ss:Type="String">FENOL URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FERRIT</Data></Cell>
+    <Cell><Data ss:Type="String">FERRITINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FE</Data></Cell>
+    <Cell><Data ss:Type="String">FERRO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FIBRI</Data></Cell>
+    <Cell><Data ss:Type="String">FIBRINOGÊNIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FLUORETO</Data></Cell>
+    <Cell><Data ss:Type="String">FLUORETO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FLU</Data></Cell>
+    <Cell><Data ss:Type="String">FLUORETO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FAC</Data></Cell>
+    <Cell><Data ss:Type="String">FOSFATASE ÁCIDA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FAP</Data></Cell>
+    <Cell><Data ss:Type="String">FOSFATASE ÁCIDA PROSTÁTICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FALC</Data></Cell>
+    <Cell><Data ss:Type="String">FOSFATASE ALCALINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FOSSEA</Data></Cell>
+    <Cell><Data ss:Type="String">FOSFATASE ALCALINA ÓSSEA ESPECÍFICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">P</Data></Cell>
+    <Cell><Data ss:Type="String">FÓSFORO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PU</Data></Cell>
+    <Cell><Data ss:Type="String">FÓSFORO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">P24</Data></Cell>
+    <Cell><Data ss:Type="String">FÓSFORO URINÁRIO (URINA 24 HORAS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FRT</Data></Cell>
+    <Cell><Data ss:Type="String">Frutosaminas (proteínas glicosiladas)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FRUT</Data></Cell>
+    <Cell><Data ss:Type="String">Frutose (Esperma)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FSH</Data></Cell>
+    <Cell><Data ss:Type="String">FSH - HORMÔNIO FOLÍCULO ESTIMULANTE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FTAG</Data></Cell>
+    <Cell><Data ss:Type="String">FTA-ABS IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FTAM</Data></Cell>
+    <Cell><Data ss:Type="String">FTA-ABS IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">G6PD</Data></Cell>
+    <Cell><Data ss:Type="String">G6PD - GLICOSE 6 FOSFATO DEHIDROGENASE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">G6PDN</Data></Cell>
+    <Cell><Data ss:Type="String">G6PD NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GAD</Data></Cell>
+    <Cell><Data ss:Type="String">GAD, AUTO ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GALN</Data></Cell>
+    <Cell><Data ss:Type="String">GALACTOSE NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GGT</Data></Cell>
+    <Cell><Data ss:Type="String">GAMA GLUTAMIL TRANSFERASE - GGT</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GAS</Data></Cell>
+    <Cell><Data ss:Type="String">GASTRINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DQ2DQ8</Data></Cell>
+    <Cell><Data ss:Type="String">GENOTIPAGEM PARA HLA DQ2 E DQ8, DOENÇA CELÍACA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GHEC</Data></Cell>
+    <Cell><Data ss:Type="String">GH BASAL E APÓS ESTÍMULO COM CLONIDINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GIAG</Data></Cell>
+    <Cell><Data ss:Type="String">GIARDIA LAMBLIA, ANTICORPOS IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GIAM</Data></Cell>
+    <Cell><Data ss:Type="String">GIARDIA LAMBLIA, ANTICORPOS IgM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLIAA</Data></Cell>
+    <Cell><Data ss:Type="String">GLIADINA IgA, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLIAG</Data></Cell>
+    <Cell><Data ss:Type="String">GLIADINA IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLIAM</Data></Cell>
+    <Cell><Data ss:Type="String">GLIADINA IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLIC</Data></Cell>
+    <Cell><Data ss:Type="String">GLICEMIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GPP</Data></Cell>
+    <Cell><Data ss:Type="String">GLICEMIA PÓS-PRANDIAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLICLIQ</Data></Cell>
+    <Cell><Data ss:Type="String">GLICOSE - Líquidos Cavitários</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLIU</Data></Cell>
+    <Cell><Data ss:Type="String">GLICOSE URINÁRIA - 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TBG</Data></Cell>
+    <Cell><Data ss:Type="String">GLOBULINA LIGADORA DE TIROXINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BETAS</Data></Cell>
+    <Cell><Data ss:Type="String">GONADOTROFINA CORIÔNICA BETA SÉRICA, PESQUISA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BETAU</Data></Cell>
+    <Cell><Data ss:Type="String">GONADOTROFINA CORIÔNICA BETA URINÁRIA, PESQUISA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ABO</Data></Cell>
+    <Cell><Data ss:Type="String">GRUPO SANGUINEO </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ABORHS</Data></Cell>
+    <Cell><Data ss:Type="String">GRUPO SANGUÍNEO E FATOR RH</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ABORH</Data></Cell>
+    <Cell><Data ss:Type="String">GRUPO SANGUÍNEO E FATOR RH</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HAPT</Data></Cell>
+    <Cell><Data ss:Type="String">HAPTOGLOBINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HAVT</Data></Cell>
+    <Cell><Data ss:Type="String">HAV Total, Anti</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HCVQT</Data></Cell>
+    <Cell><Data ss:Type="String">HCV PCR QUANTITATIVO EM TEMPO REAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HCVPCR</Data></Cell>
+    <Cell><Data ss:Type="String">HCV, PCR QUALITATIVO </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HDVM</Data></Cell>
+    <Cell><Data ss:Type="String">HDV IgM, ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HELIA</Data></Cell>
+    <Cell><Data ss:Type="String">HELICOBACTER PYLORI IgA, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HELIG</Data></Cell>
+    <Cell><Data ss:Type="String">HELICOBACTER PYLORI IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HELIM</Data></Cell>
+    <Cell><Data ss:Type="String">HELICOBACTER PYLORI IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HT</Data></Cell>
+    <Cell><Data ss:Type="String">HEMATÓCRITO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WHEMA</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOCULTURA (AERÓBIOS) - 1ª AMOSTRA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WHEMA2</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOCULTURA (AERÓBIOS) - 2ª AMOSTRA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HB</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOGLOBINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBF</Data></Cell>
+    <Cell><Data ss:Type="String">Hemoglobina Fetal</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBG</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOGLOBINA GLICADA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBH</Data></Cell>
+    <Cell><Data ss:Type="String">Hemoglobina H, Pesquisa</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBN</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOGLOBINOPATIAS NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBUR</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOGLOBINÚRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IHPN</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOGLOBINÚRIA PAROXÍSTICA NOTURNA (HNP)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HM</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOGRAMA COMPLETO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HEMOS</Data></Cell>
+    <Cell><Data ss:Type="String">HEMOSSIDERINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HAVG</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE A - ANTI HAV IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HAVM</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE A - ANTI HAV IgM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBCG</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - ANTI HBC IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBCM</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - ANTI HBC IgM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBCT</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - ANTI HBC TOTAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBS</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - ANTI HBS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBE</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - ANTICORPOS ANTI HBe</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBEAG</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - HBeAg</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBSAG</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - HBsAg (ANTÍGENO AUSTRÁLIA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HBSAGQL</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE B - HBsAg (ANTÍGENO AUSTRÁLIA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HCV</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE C - ANTI HCV</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HCVQL</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE C - ANTI HCV</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HEV</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE E - ANTI HEV IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HEVM</Data></Cell>
+    <Cell><Data ss:Type="String">HEPATITE E - ANTI HEV IgM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HVG</Data></Cell>
+    <Cell><Data ss:Type="String">HERPESVÍRUS SIMPLES I E II, ANTICORPOS IgG ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HVM</Data></Cell>
+    <Cell><Data ss:Type="String">HERPESVIRUS SIMPLES I E II, ANTICORPOS IGM ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GHE</Data></Cell>
+    <Cell><Data ss:Type="String">HGH - HORMÔNIO DO CRESCIMENTO APÓS ESTÍMULO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HIVQT</Data></Cell>
+    <Cell><Data ss:Type="String">HIV - Quantificação por PCR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HIVEL</Data></Cell>
+    <Cell><Data ss:Type="String">HIV I e II, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HIV</Data></Cell>
+    <Cell><Data ss:Type="String">HIV I e II, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HIV2</Data></Cell>
+    <Cell><Data ss:Type="String">HIV I e II, ANTICORPOS ANTI - 2ª AMOSTRA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WESTERN</Data></Cell>
+    <Cell><Data ss:Type="String">HIV, ANTICORPOS ANTI - PESQUISA (WESTERN BLOT) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HLAB27</Data></Cell>
+    <Cell><Data ss:Type="String">HLA B27 - DETECÇÃO POR PCR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HOMO</Data></Cell>
+    <Cell><Data ss:Type="String">HOMOCISTEÍNA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HOM-U</Data></Cell>
+    <Cell><Data ss:Type="String">HOMOCISTINÚRIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GH</Data></Cell>
+    <Cell><Data ss:Type="String">HORMÔNIO DO CRESCIMENTO - GH </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HTLV</Data></Cell>
+    <Cell><Data ss:Type="String">HTLV I E II, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IBU</Data></Cell>
+    <Cell><Data ss:Type="String">IBUPROFENO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IGA</Data></Cell>
+    <Cell><Data ss:Type="String">IgA, IMUNOGLOBULINA A</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IGD</Data></Cell>
+    <Cell><Data ss:Type="String">IgD, IMUNOGLOBULINA D</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ERVILHA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (12) - ERVILHA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMARELO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (717) - TARTRAZINA  </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DICLO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (C281) - DICLOFENACO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">D1</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (D1) - ÁCAROS - DERMATOPHAGOIDES PTERONYSSINUS </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">D2</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (D2) - ÁCAROS - DERMATOPHAGOIDES FARINAE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BLOMIA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (D201) - ÁCAROS - BLOMIA TROPICALIS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">D3</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (D3) - ÁCAROS - Dermatophagoides microceras </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">D70</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (D70) - Ácaros - Acarus siro</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GATO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (E1) - EPITÉLIO E CASPA DE GATO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (E5) - EPITÉLIOS E CASPA DE CÃO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CLARA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F1) -  CLARA DE OVO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMENDOIM</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F13) - AMENDOIM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOJA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F14) - GRÃO DE SOJA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEITE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F2) - LEITE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PISTACHE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F203) - PISTACHE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LIMAO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F208) - Alimentos - Limão</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MEL</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F247) - Alimentos - Mel</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOMATE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFÍCO (F25) - TOMATE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">UVA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F259) - UVA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PORCO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F26) - CARNE DE PORCO </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CASTANHA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F299) - Alimentos - Castanha</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PEIXE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F3)- Alimentos - Peixe-Bacalhau</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CENOURA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFÍCO (F31) - CENOURA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MELANCIA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F329) - MELANCIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LARANJA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F33) - LARANJA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VERMELHO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F340) - EXTRATO DE COCHONILHA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BATATA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F35) - Alimentos - Batata </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TRIGO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F4) -  TRIGO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MORANGO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F44)- MORANGO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALHO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F47) - Alimentos - Alho</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CEBOLA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (F48) - Alimentos - Cebola</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AVEIA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F7) - AVEIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GEMA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F75) - GEMA DE OVO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLUTEN</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F79) - GLÚTEN</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MILHO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F8) - MILHO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MANGA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F91) - MANGA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CACAU</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F93) - CACAU</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PERA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (F94) - PÊRA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ABELHA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (I1) - ABELHA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MUTUCA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (I204) - MOSCA MUTUCA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MARIM</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (I4) - VENENO DE MARIMBONDO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MALA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (RF279) - PIMENTA DO CHILE / PIMENTA MALAGUETA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MAMAO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO (RF293) - MAMÃO PAPAYA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CABRA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico (RF300) - Alimentos - Leite de Cabra</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DIPIRONA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico - C294 Dipirona</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ABACATE</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA ABACATE (F96)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AAS</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECÍFICO PARA ÁCIDO ACETILSALICÍLICO (C207)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BENZO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFICO PARA ACIDO BENZOICO (C703 )</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F20</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA AMÊNDOA (F20)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMENDOA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFICO PARA AMENDOA F20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">AMOX</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Específico para Amoxicilina (C6) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ABACAXI</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA ANANÁS (ABACAXI) - (F210) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ARROZ</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA ARROZ (F9)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FUMIGA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA ASPERGILLUS FUMIGATUS (M3)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F40</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA ATUM  - F40</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F17</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA AVELÃ (F17)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BANANA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA BANANA (F92)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BARATA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA BARATA (I6)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAFE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFICO PARA CAFE (RF221)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAMARAO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA CAMARÃO (F24)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CANELA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA CANELA (RF220)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CARANGUE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA CARANGUEJO (F23)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FRANGO</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECÍFICO PARA CARNE DE GALINHA (F83)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VACA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFICO PARA CARNE DE VACA (F27)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CASEINA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECÍFICO PARA CASEÍNA (F78)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CAJU</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECíFICO PARA CASTANHA DE CAJU (F202)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CENTEIO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA CENTEIO (F5) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F6</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA CEVADA F6</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COCO</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA COCO (F36)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CONA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA CONALBUMINA F323 </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COELHO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA EPITÉLIO DE COELHO (E82)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F15</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA FEIJÃO BRANCO (F15)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FEIJAO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA FEIJÃO VERMELHO (F287) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FORMIGA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA FORMIGA  (I70)  </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">KIWI</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA KIWI (F84)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA LA DE OVELHA -  k20</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LAGOSTA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECÍFICO PARA LAGOSTA VERMELHA (F80)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BORRACHA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA LATEX - K82</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LENTILHA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA LENTILHA (F235)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F45</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA LEVEDURA F45</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F333</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA LINHAÇA (F333)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LULA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECÍFICO PARA LULA DO PACÍFICO (F58) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RF294</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA MARACUJÁ (F294)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MELAO</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA MELAO (F87)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MEXILHAO</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECÍFICO PARA MEXILHÃO AZUL (F37)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NOZ</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA NOZ (NOGUEIRA AMERICANA) (F201)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NOZES</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA NOZ F256</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F416</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA ÔMEGA-5 (F416)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F245</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA OVO - F245</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OVOAL</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFICO PARA OVOALBUMINA F232 </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OVOMU</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECIFICO PARA OVOMUCÓIDE F233</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PARA209</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PARACETAMOL (C209)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CANARIO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PENAS DE CANÁRIO (E201)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">E85</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA PENAS DE GALINHA (E85) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">E86</Data></Cell>
+    <Cell><Data ss:Type="String">IGE ESPECIFICO PARA PENAS DE PATO (E86) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PERIQUIT</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PENAS DE PERIQUITO (E78)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PENICIL</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PENICILINA G (C1) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PERNIL</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PERNILONGO (I71) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F280</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PIMENTA NEGRA (F280) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F218</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PIMENTÃO F218</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PIRO304</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PIROXICAM (C304)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">H2</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA PÓ CASEIRO H2 (HOLLISTER STIER)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">QUEIJO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA QUEIJO (F82)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F422</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA RARA H 1, AMENDOIM (F422) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F423</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA RARA H 2, AMENDOIM (F423)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F41</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA SALMÃO  - F41</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SARDINHA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA SARDINHA (RF308)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F10</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA SEMENTE DE GERGELIM (F10)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">K84</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA SEMENTE DE GIRASSOL (K84)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SULFA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA SULFAMETOXAZOL (C223)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RC202</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA SUXAMETHONIUM (RC202)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TILAPIA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA TILÁPIA (F414)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F11</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA TRIGO MOURISCO (F11) (TRIGO NEGRO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VESPA</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA VENENO DE VESPA (I3)  </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">XYLO</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PARA XYLOCAÍNA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">INALANTE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE ESPECÍFICO PHADIATOP INALANTES </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EX1</Data></Cell>
+    <Cell><Data ss:Type="String">IgE MÚLTIPLO (EX1) - EPITÉLIO CÃO, GATO, CAVALO, VACA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EX2</Data></Cell>
+    <Cell><Data ss:Type="String">IgE MULTIPLO (EX2)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EX72</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Múltiplo (EX72) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FX1</Data></Cell>
+    <Cell><Data ss:Type="String">IgE MÚLTIPLO (FX1) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PESCADO</Data></Cell>
+    <Cell><Data ss:Type="String">IGE MULTIPLO (FX2) - Peixe (bacalhau), camarão, mexilhão azul, atum e salmão</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FX3</Data></Cell>
+    <Cell><Data ss:Type="String">IGE MULTIPLO (FX3) - Trigo (F4), aveia (F7), milho (F8), gergelim (F10) e trigo negro, trigo sarraceno, trigo mourisco </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FX5</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Múltiplo (FX5) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GX3</Data></Cell>
+    <Cell><Data ss:Type="String">IGE MÚLTIPLO (GX3)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">POEIRA</Data></Cell>
+    <Cell><Data ss:Type="String">IGE MÚLTIPLO (HX2)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EX70</Data></Cell>
+    <Cell><Data ss:Type="String">IgE PAINEL  (EX70) - EPITÉLIO COBAIA, COELHO, HAMSTER</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MAR</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Painel (FX2) - Alimentos 2 (Frutos do Mar)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CEREAIS</Data></Cell>
+    <Cell><Data ss:Type="String">IgE Painel (FX3) - Alimentos 3 (Cereais)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GX1</Data></Cell>
+    <Cell><Data ss:Type="String">IgE PAINEL (GX1) - PÓLEN GRAMÍNEAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GX2</Data></Cell>
+    <Cell><Data ss:Type="String">IgE PAINEL (GX2) - PÓLEN GRAMÍNEAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MX1</Data></Cell>
+    <Cell><Data ss:Type="String">IgE PAINEL (MX1) - FUNGOS E LEVEDURAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MX2</Data></Cell>
+    <Cell><Data ss:Type="String">IgE PAINEL (MX2) - FUNGOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">D202</Data></Cell>
+    <Cell><Data ss:Type="String">IGE PARA NDER P1 DERMATOPHAGOIDES PTERONISSINUS (D202)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">D203</Data></Cell>
+    <Cell><Data ss:Type="String">IGE PARA NDER P2 DERMATOPHAGOIDES PTERONISSINUS (D203)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">F352</Data></Cell>
+    <Cell><Data ss:Type="String">IgE PARA RARA H 8 PR-10, AMENDOIM (RF352)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IGE</Data></Cell>
+    <Cell><Data ss:Type="String">IgE, IMUNOGLOBULINA E</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IGF</Data></Cell>
+    <Cell><Data ss:Type="String">IGFBP-3 - PROTEÍNA LIGADORA IGF-I TIPO 3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IGG</Data></Cell>
+    <Cell><Data ss:Type="String">IgG, IMUNOGLOBULINA G</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IGM</Data></Cell>
+    <Cell><Data ss:Type="String">IgM, IMUNOGLOBULINA M</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IMUFIX</Data></Cell>
+    <Cell><Data ss:Type="String">IMUNOFIXACAO - ELETROFORESE DE IMUNOGLOBULINAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IMUNO</Data></Cell>
+    <Cell><Data ss:Type="String">IMUNOFIXAÇÃO DA PROTEÍNA SÉRICA (IMUNOELETROFORESE)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IND-U</Data></Cell>
+    <Cell><Data ss:Type="String">INDICAN, PESQUISA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">IST</Data></Cell>
+    <Cell><Data ss:Type="String">ÍNDICE DE SATURAÇÃO DA TRANSFERRINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">C1FUN</Data></Cell>
+    <Cell><Data ss:Type="String">INIBIDOR DE C1 ESTERASE FUNCIONAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">C1QUANT</Data></Cell>
+    <Cell><Data ss:Type="String">INIBIDOR DE C1 ESTERASE QUANTITATIVO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">INSUL</Data></Cell>
+    <Cell><Data ss:Type="String">INSULINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">INSU2D</Data></Cell>
+    <Cell><Data ss:Type="String">INSULINA JEJUM E 2 HORAS APÓS DEXTROSOL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">INSULP</Data></Cell>
+    <Cell><Data ss:Type="String">INSULINA PÓS PRANDIAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ANTINSUL</Data></Cell>
+    <Cell><Data ss:Type="String">INSULINA, AUTO ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CTX</Data></Cell>
+    <Cell><Data ss:Type="String">INTERLIGADORES C TERMINAIS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ISOA</Data></Cell>
+    <Cell><Data ss:Type="String">ISOAGLUTININAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">JO</Data></Cell>
+    <Cell><Data ss:Type="String">JO1, Anticorpos Anti </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LAMKA</Data></Cell>
+    <Cell><Data ss:Type="String">LAMBDA (CADEIA LEVE) E KAPPA (CADEIA LEVE) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LAMO</Data></Cell>
+    <Cell><Data ss:Type="String">LAMOTRIGINA, DOSAGEM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEPTI</Data></Cell>
+    <Cell><Data ss:Type="String">LEPTINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEPG</Data></Cell>
+    <Cell><Data ss:Type="String">LEPTOSPIROSE, ANTICORPOS IgG (IFI)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEPM</Data></Cell>
+    <Cell><Data ss:Type="String">LEPTOSPIROSE, ANTICORPOS IgM (IFI)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LH</Data></Cell>
+    <Cell><Data ss:Type="String">LH - HORMÔNIO LUTEINIZANTE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LIPASE</Data></Cell>
+    <Cell><Data ss:Type="String">LIPASE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LIQASC</Data></Cell>
+    <Cell><Data ss:Type="String">Líquido Ascítico, Rotina</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ROTINALP</Data></Cell>
+    <Cell><Data ss:Type="String">LÍQUIDO PLEURAL, ROTINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ROTINALS</Data></Cell>
+    <Cell><Data ss:Type="String">LÍQUIDO SINOVIAL, ROTINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LCR</Data></Cell>
+    <Cell><Data ss:Type="String">LÍQUOR, ROTINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LISOZINA</Data></Cell>
+    <Cell><Data ss:Type="String">LISOZIMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LI</Data></Cell>
+    <Cell><Data ss:Type="String">LÍTIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LIENDO</Data></Cell>
+    <Cell><Data ss:Type="String">LÍTIO ENDÓGENO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LKM</Data></Cell>
+    <Cell><Data ss:Type="String">LKM-1, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BPRL</Data></Cell>
+    <Cell><Data ss:Type="String">MACRO PROLACTINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MG</Data></Cell>
+    <Cell><Data ss:Type="String">MAGNÉSIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MG24</Data></Cell>
+    <Cell><Data ss:Type="String">MAGNÉSIO URINÁRIO (Urina 24 horas)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MGU</Data></Cell>
+    <Cell><Data ss:Type="String">MAGNÉSIO URINÁRIO - AMOSTRA ISOLADA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MNERI</Data></Cell>
+    <Cell><Data ss:Type="String">MANGANÊS SANGUÍNEO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MN</Data></Cell>
+    <Cell><Data ss:Type="String">MANGANÊS SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MNU</Data></Cell>
+    <Cell><Data ss:Type="String">Manganês Urinário</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MERCUR</Data></Cell>
+    <Cell><Data ss:Type="String">MERCÚRIO </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">HGU</Data></Cell>
+    <Cell><Data ss:Type="String">MERCÚRIO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">META</Data></Cell>
+    <Cell><Data ss:Type="String">METANEFRINAS TOTAIS E FRAÇÕES (URINA 24 HORAS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CETONA</Data></Cell>
+    <Cell><Data ss:Type="String">METIL ETILCETONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WFUN</Data></Cell>
+    <Cell><Data ss:Type="String">MICOCULTURA - CULTURA PARA FUNGOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MD</Data></Cell>
+    <Cell><Data ss:Type="String">MICOLÓGICO DIRETO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MICALBU</Data></Cell>
+    <Cell><Data ss:Type="String">MICROALBUMINÚRIA - AMOSTRA ISOLADA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MICALB</Data></Cell>
+    <Cell><Data ss:Type="String">MICROALBUMINÚRIA - URINA DE 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MICALB12</Data></Cell>
+    <Cell><Data ss:Type="String">MICROALBUMINÚRIA DE 12 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ATPO</Data></Cell>
+    <Cell><Data ss:Type="String">MICROSSOMAL, ANTICORPOS ANTI TPO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MINERA</Data></Cell>
+    <Cell><Data ss:Type="String">MINERALOGRAMA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MONO</Data></Cell>
+    <Cell><Data ss:Type="String">Monoteste</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MUSCE</Data></Cell>
+    <Cell><Data ss:Type="String">Músculo Estriado, Anticorpos Anti </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MUSCL</Data></Cell>
+    <Cell><Data ss:Type="String">MÚSCULO LISO, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MUT2</Data></Cell>
+    <Cell><Data ss:Type="String">MUTAÇÃO DO GENE DA PROTROMBINA - G20210A </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">JAK2</Data></Cell>
+    <Cell><Data ss:Type="String">MUTAÇÃO V617F NO GENE JAK2, DETECÇÃO QUALITATIVA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MICG</Data></Cell>
+    <Cell><Data ss:Type="String">Mycoplasma Pneumoniae IgG, Anticorpos</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MICM</Data></Cell>
+    <Cell><Data ss:Type="String">Mycoplasma Pneumoniae IgM, Anticorpos</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXINAAB</Data></Cell>
+    <Cell><Data ss:Type="String">não usar CLOSTRIDIUM DIFFICILE - TOXINA A E B</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ANCA</Data></Cell>
+    <Cell><Data ss:Type="String">NEUTRÓFILOS , ANTI - ANCA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NI</Data></Cell>
+    <Cell><Data ss:Type="String">NÍQUEL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NIU</Data></Cell>
+    <Cell><Data ss:Type="String">NÍQUEL URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OSMOL</Data></Cell>
+    <Cell><Data ss:Type="String">OSMOLALIDADE SÉRICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OSTEO</Data></Cell>
+    <Cell><Data ss:Type="String">OSTEOCALCINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OXA24</Data></Cell>
+    <Cell><Data ss:Type="String">OXALATO URINÁRIO - URINA DE 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OXCARBA</Data></Cell>
+    <Cell><Data ss:Type="String">OXCARBAZEPINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DSTPCRV</Data></Cell>
+    <Cell><Data ss:Type="String">PAINEL PARA IST POR PCR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PTH</Data></Cell>
+    <Cell><Data ss:Type="String">PARATORMONIO INTACTO -  PTH</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PEPC</Data></Cell>
+    <Cell><Data ss:Type="String">PEPTÍDEO C</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOBNP</Data></Cell>
+    <Cell><Data ss:Type="String">PEPTÍDEO NATRIURÉTICO - BNP</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COVIDLAC</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE ANTICORPOS ANTI-SARS-CoV-2 (IgM E IgG)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NSI</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE ANTÍGENO NSI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RSV</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE ANTÍGENOS DO RSV - VÍRUS SINCICIAL RESPIRATÓRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LE</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE CÉLULAS LE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEFAN</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE CÉLULAS LE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CHEM</Data></Cell>
+    <Cell><Data ss:Type="String">Pesquisa de Cilindros Hemáticos</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CORYNE</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE CORYNEBACTERIUM MINUTISSIMUM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">DISMO</Data></Cell>
+    <Cell><Data ss:Type="String">Pesquisa de Dismorfismo Eritrocitário</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OXIU</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE ENTEROBIUS VERMICULARES (OXIÚRUS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GORD</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE GORDURA NAS FEZES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEUFEZ</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE LEUCÓCITOS NAS FEZES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LEVFEZ</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE LEVEDURAS NAS FEZES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOF2</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE SANGUE OCULTO NAS FEZES (2ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOF3</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE SANGUE OCULTO NAS FEZES (3ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOF4</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE SANGUE OCULTO NAS FEZES (4ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOF5</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE SANGUE OCULTO NAS FEZES (5ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOF</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA DE SANGUE OCULTO NAS FEZES (AMOSTRA ISOLADA OU 1ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MIOU</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA MIOGLOBINA URINARIA </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GRIPEA</Data></Cell>
+    <Cell><Data ss:Type="String">PESQUISA PARA INFLUENZA </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PHFEZ</Data></Cell>
+    <Cell><Data ss:Type="String">pH Fecal</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PHU</Data></Cell>
+    <Cell><Data ss:Type="String">pH Urinário</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PNEUMO</Data></Cell>
+    <Cell><Data ss:Type="String">PNEUMOCOCOS, ANTICORPOS IgG ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">K</Data></Cell>
+    <Cell><Data ss:Type="String">POTÁSSIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">KU</Data></Cell>
+    <Cell><Data ss:Type="String">Potássio Urinário</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">KU24</Data></Cell>
+    <Cell><Data ss:Type="String">POTÁSSIO URINÁRIO - URINA 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BNP</Data></Cell>
+    <Cell><Data ss:Type="String">ProBNP (PEPTÍDEO NATRIURÉTICO CEREBRAL) - N TERMINAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PRG</Data></Cell>
+    <Cell><Data ss:Type="String">PROGESTERONA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PRL</Data></Cell>
+    <Cell><Data ss:Type="String">PROLACTINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PRLDIL</Data></Cell>
+    <Cell><Data ss:Type="String">PROLACTINA APÓS DILUIÇÃO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PROTC</Data></Cell>
+    <Cell><Data ss:Type="String">Proteína C Funcional</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PCR</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEÍNA C REATIVA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PCRU</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEÍNA C REATIVA QUANTITATIVA DE ALTA SENSIBILIDADE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PSF</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEÍNA S FUNCIONAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PSL</Data></Cell>
+    <Cell><Data ss:Type="String">Proteina S Livre</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PST</Data></Cell>
+    <Cell><Data ss:Type="String">Proteina S Total</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">BENC</Data></Cell>
+    <Cell><Data ss:Type="String">Proteinas de Bence Jones - Pesquisa</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PROTDV</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEÍNAS TOTAIS - DIVERSOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PTF</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEÍNAS TOTAIS E FRAÇÕES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ALB</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEINÚRIA </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PROT12</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEINÚRIA DE 12 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PROT24</Data></Cell>
+    <Cell><Data ss:Type="String">PROTEINÚRIA DE 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PPF2</Data></Cell>
+    <Cell><Data ss:Type="String">PROTOPARASITOLÓGICO (2ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PPF3</Data></Cell>
+    <Cell><Data ss:Type="String">PROTOPARASITOLÓGICO (3ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PPF4</Data></Cell>
+    <Cell><Data ss:Type="String">PROTOPARASITOLÓGICO (4ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PPF5</Data></Cell>
+    <Cell><Data ss:Type="String">PROTOPARASITOLÓGICO (5ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PPF</Data></Cell>
+    <Cell><Data ss:Type="String">PROTOPARASITOLÓGICO (AMOSTRA ISOLADA OU 1ª AMOSTRA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">GLOB</Data></Cell>
+    <Cell><Data ss:Type="String">PROVA DE RESISTÊNCIA GLOBULAR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LACO</Data></Cell>
+    <Cell><Data ss:Type="String">Prova do laço</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PSAL</Data></Cell>
+    <Cell><Data ss:Type="String">PSA LIVRE E TOTAL - ANTÍGENO PROSTATICO ESPECÍFICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PSA</Data></Cell>
+    <Cell><Data ss:Type="String">PSA TOTAL - ANTÍGENO PROSTÁTICO ESPECÍFICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SIROLI</Data></Cell>
+    <Cell><Data ss:Type="String">RAPAMICINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RAZAO</Data></Cell>
+    <Cell><Data ss:Type="String">RAZÃO PROTEÍNA/CREATININA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RNP</Data></Cell>
+    <Cell><Data ss:Type="String">RNP, AUTO ANTICORPO ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ROTA</Data></Cell>
+    <Cell><Data ss:Type="String">Rotavírus, Pesquisa</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COVIDPCR</Data></Cell>
+    <Cell><Data ss:Type="String">RT PCR PARA SARS-Cov2 - DIAGNÓSTICO MOLECULAR CORONAVÍRUS COVID-19</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NCOV24</Data></Cell>
+    <Cell><Data ss:Type="String">RT PCR PARA SARS-Cov2 - DIAGNÓSTICO MOLECULAR CORONAVÍRUS COVID-19</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RUBG</Data></Cell>
+    <Cell><Data ss:Type="String">RUBÉOLA IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RUBM</Data></Cell>
+    <Cell><Data ss:Type="String">RUBÉOLA IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RUBN</Data></Cell>
+    <Cell><Data ss:Type="String">RUBÉOLA NEONATAL IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SARG</Data></Cell>
+    <Cell><Data ss:Type="String">SARAMPO, ANTICORPOS IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SARM</Data></Cell>
+    <Cell><Data ss:Type="String">SARAMPO, ANTICORPOS IgM</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SCL</Data></Cell>
+    <Cell><Data ss:Type="String">SCL 70, Auto Anticorpos Anti </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SELE</Data></Cell>
+    <Cell><Data ss:Type="String">SELÊNIO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SHBG</Data></Cell>
+    <Cell><Data ss:Type="String">SHBG - GLOBULINA LIGADORA DE HORMÔNIOS SEXUAIS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SM</Data></Cell>
+    <Cell><Data ss:Type="String">SM, AUTO ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NA</Data></Cell>
+    <Cell><Data ss:Type="String">SÓDIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NAUI</Data></Cell>
+    <Cell><Data ss:Type="String">SÓDIO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">NAU</Data></Cell>
+    <Cell><Data ss:Type="String">SÓDIO URINÁRIO- URINA 24 HORAS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SOMA</Data></Cell>
+    <Cell><Data ss:Type="String">SOMATOMEDINA C (IGF -1)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COVID</Data></Cell>
+    <Cell><Data ss:Type="String">SOROLOGIA PARA COVID-19 (IgM/IgG)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SSA</Data></Cell>
+    <Cell><Data ss:Type="String">SSA/RO AUTO ANTICORPOS, ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SSB</Data></Cell>
+    <Cell><Data ss:Type="String">SSB/LA AUTO ANTICORPOS, ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">REDFEZ</Data></Cell>
+    <Cell><Data ss:Type="String">Substâncias Redutoras, Pesquisa</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SDHEA</Data></Cell>
+    <Cell><Data ss:Type="String">SULFATO DE DEHIDROEPIANDROSTERONA - SDHEA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SDHEAE</Data></Cell>
+    <Cell><Data ss:Type="String">SULFATO DE DEHIDROEPIANDROSTERONA APÓS ESTÍMULO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">T3L</Data></Cell>
+    <Cell><Data ss:Type="String">T3 LIVRE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RT3</Data></Cell>
+    <Cell><Data ss:Type="String">T3 REVERSO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">T3</Data></Cell>
+    <Cell><Data ss:Type="String">T3 TOTAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">T4L</Data></Cell>
+    <Cell><Data ss:Type="String">T4 LIVRE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">T4N</Data></Cell>
+    <Cell><Data ss:Type="String">T4 Neonatal</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">T4</Data></Cell>
+    <Cell><Data ss:Type="String">T4 TOTAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TAC</Data></Cell>
+    <Cell><Data ss:Type="String">TACROLIMUS (FK506)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TAP</Data></Cell>
+    <Cell><Data ss:Type="String">TAP - TEMPO DE ATIVIDADE DA PROTROMBINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TC</Data></Cell>
+    <Cell><Data ss:Type="String">TC - TEMPO DE COAGULAÇÃO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TEO</Data></Cell>
+    <Cell><Data ss:Type="String">Teofilina</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PATER</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE PATERNIDADE TRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">PATURG3</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE PATERNIDADE TRIO - (URGÊNCIA 4 DIAS ÚTEIS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RT</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE RETRAÇÃO DO COÁGULO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TSF</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE SEXAGEM FETAL </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">FOICE</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE SOLUBILIDADE DA HEMOGLOBINA S (TESTE DE FALCIZAÇÃO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">LACTOSE</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE TOLERÂNCIA À LACTOSE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">COCA</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE TRIAGEM PARA COCAÍNA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">OPI</Data></Cell>
+    <Cell><Data ss:Type="String">TESTE DE TRIAGEM PARA OPIÁCEOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TESTOBI</Data></Cell>
+    <Cell><Data ss:Type="String">TESTOSTERONA BIODISPONÍVEL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TESTOL</Data></Cell>
+    <Cell><Data ss:Type="String">TESTOSTERONA LIVRE CALCULADA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TESTO</Data></Cell>
+    <Cell><Data ss:Type="String">TESTOSTERONA TOTAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">THC</Data></Cell>
+    <Cell><Data ss:Type="String">THC - TESTE DE TRIAGEM PARA CANABINÓIDES</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CD19</Data></Cell>
+    <Cell><Data ss:Type="String">TIPAGEM DE LINFOCITOS CD2 E CD19 + CD3, CD4 E CD8</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TIREO</Data></Cell>
+    <Cell><Data ss:Type="String">TIREOGLOBULINA SÉRICA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ANTTIR</Data></Cell>
+    <Cell><Data ss:Type="String">TIREOGLOBULINA, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXOCAG</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOCARA IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXOIGA</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOPLASMOSE IgA, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXOG</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOPLASMOSE IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ELFAG</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOPLASMOSE IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXMELFA</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOPLASMOSE IgM, ANTICORPOS (ELFA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXOM</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOPLASMOSE IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TOXOA</Data></Cell>
+    <Cell><Data ss:Type="String">TOXOPLASMOSE, TESTE DE AVIDEZ IgG</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TRAB</Data></Cell>
+    <Cell><Data ss:Type="String">TRAB - Anticorpo Anti Receptor de TSH</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TGO</Data></Cell>
+    <Cell><Data ss:Type="String">TRANSAMINASE OXALACÉTICA (TGO/AST)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TGP</Data></Cell>
+    <Cell><Data ss:Type="String">TRANSAMINASE PIRÚVICA (TGP/ALT) </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TRANSF</Data></Cell>
+    <Cell><Data ss:Type="String">TRANSFERRINA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TREHA</Data></Cell>
+    <Cell><Data ss:Type="String">TREPONEMA PALLIDUM (HA)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TCT</Data></Cell>
+    <Cell><Data ss:Type="String">TRICLOROCOMPOSTOS TOTAIS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TRI</Data></Cell>
+    <Cell><Data ss:Type="String">TRIGLICERÍDEOS</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TRIPSIN</Data></Cell>
+    <Cell><Data ss:Type="String">TRIPSINA NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TROPO</Data></Cell>
+    <Cell><Data ss:Type="String">TROPONINA I</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CTNI</Data></Cell>
+    <Cell><Data ss:Type="String">TROPONINA I - QUANTITATIVA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TC-HA</Data></Cell>
+    <Cell><Data ss:Type="String">TRYPANOSOMA CRUZI (HEMATGLUTINAÇÃO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TS</Data></Cell>
+    <Cell><Data ss:Type="String">TS - TEMPO DE SANGRAMENTO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TSH</Data></Cell>
+    <Cell><Data ss:Type="String">TSH - HORMÔNIO TIREOESTIMULANTE</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TSHN</Data></Cell>
+    <Cell><Data ss:Type="String">TSH - NEONATAL</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TTPA</Data></Cell>
+    <Cell><Data ss:Type="String">TTPA - TEMPO DE TROMBOPLASTINA PARCIAL ATIVADA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">UREIA</Data></Cell>
+    <Cell><Data ss:Type="String">URÉIA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">UREIA24</Data></Cell>
+    <Cell><Data ss:Type="String">URÉIA (URINA DE 24 HORAS)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">URINA</Data></Cell>
+    <Cell><Data ss:Type="String">URINA TIPO I</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">WUR</Data></Cell>
+    <Cell><Data ss:Type="String">UROCULTURA</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VARG</Data></Cell>
+    <Cell><Data ss:Type="String">VARICELLA ZOSTER IGG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VARM</Data></Cell>
+    <Cell><Data ss:Type="String">VARICELLA ZOSTER IGM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VASO</Data></Cell>
+    <Cell><Data ss:Type="String">VASOPRESSINA - HORMÔNIO ANTIDIURÉTICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VDRL</Data></Cell>
+    <Cell><Data ss:Type="String">VDRL </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VHS</Data></Cell>
+    <Cell><Data ss:Type="String">VHS - VELOCIDADE DE HEMOSSEDIMENTAÇÃO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VITA</Data></Cell>
+    <Cell><Data ss:Type="String">VITAMINA A</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">B12</Data></Cell>
+    <Cell><Data ss:Type="String">VITAMINA B12</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VITC</Data></Cell>
+    <Cell><Data ss:Type="String">VITAMINA C (ÁCIDO ASCÓRBICO)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VITD</Data></Cell>
+    <Cell><Data ss:Type="String">VITAMINA D (25-HIDROXIVITAMINA D3)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">VITE</Data></Cell>
+    <Cell><Data ss:Type="String">VITAMINA E</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ZIKAG</Data></Cell>
+    <Cell><Data ss:Type="String">ZIKA IgG, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ZIKAM</Data></Cell>
+    <Cell><Data ss:Type="String">ZIKA IgM, ANTICORPOS ANTI</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ZNERI</Data></Cell>
+    <Cell><Data ss:Type="String">ZINCO ERITROCITÁTIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ZN</Data></Cell>
+    <Cell><Data ss:Type="String">ZINCO SÉRICO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ZNU</Data></Cell>
+    <Cell><Data ss:Type="String">ZINCO URINÁRIO</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Span="2"/>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.49212598499999999"/>
+    <Footer x:Margin="0.49212598499999999"/>
+    <PageMargins x:Bottom="0.984251969" x:Left="0.78740157499999996"
+     x:Right="0.78740157499999996" x:Top="0.984251969"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <TopRowVisible>580</TopRowVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>693</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
