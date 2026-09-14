@@ -11,6 +11,25 @@ import { requestConferenceProcessing, startConferenceProcessing } from "./confer
 
 const CONFERENCE_BUCKET = "unimed-guides";
 
+type ParserResult = {
+  status: "ok" | "reading_unavailable";
+  reason?: "text_unavailable" | "unexpected_layout";
+  metadata?: Record<string, string | null>;
+  procedures?: Array<{
+    raw_text: string;
+    page: number;
+    code: string;
+    description: string;
+    requested_quantity: number;
+    authorized_quantity: number;
+  }>;
+};
+
+function isParserResult(value: unknown): value is ParserResult {
+  if (!value || typeof value !== "object" || !("status" in value)) return false;
+  return value.status === "ok" || value.status === "reading_unavailable";
+}
+
 async function currentOperatorId() {
   const requester = await createSupabaseServerClient();
   const { data } = await requester.auth.getClaims();
@@ -33,6 +52,7 @@ async function dispatchConferenceProcessing(
   const admin = createSupabaseAdminClient();
   const processorUrl = process.env.PDF_PROCESSOR_URL;
   const processorSecret = process.env.PDF_PROCESSOR_SHARED_SECRET;
+  let parserResult: ParserResult;
   if (processorUrl) {
     if (!processorSecret) return { status: "awaiting_processing" as const, error: null };
     try {
@@ -42,6 +62,11 @@ async function dispatchConferenceProcessing(
         body: JSON.stringify({ conferenceId, sourceUrl: signedUrl }),
       });
       if (!response.ok) return { status: "awaiting_processing" as const, error: "O serviço de processamento não respondeu." };
+      const responseBody: unknown = await response.json();
+      if (!isParserResult(responseBody)) {
+        return { status: "awaiting_processing" as const, error: "O serviço de processamento retornou um resultado inválido." };
+      }
+      parserResult = responseBody;
     } catch {
       return { status: "awaiting_processing" as const, error: "O serviço de processamento está indisponível." };
     }
@@ -50,7 +75,10 @@ async function dispatchConferenceProcessing(
   }
 
   const { error } = await admin.from("conferences").update({
-    processing_requested_at: new Date().toISOString(), status: "processing",
+    processing_requested_at: new Date().toISOString(),
+    extraction_completed_at: new Date().toISOString(),
+    extraction_result: parserResult,
+    status: "processing",
   }).eq("id", conferenceId).eq("created_by", userId);
   return { status: "processing" as const, error: error?.message ?? null };
 }

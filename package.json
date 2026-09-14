@@ -13,6 +13,7 @@
     "start": "next start",
     "seed:catalog": "node --experimental-strip-types scripts/generate-catalog-seed.ts",
     "test": "vitest run",
+    "test:parser": "docker compose run --rm --build parser python -m unittest discover -s tests -v",
     "test:watch": "vitest"
   },
   "dependencies": {
