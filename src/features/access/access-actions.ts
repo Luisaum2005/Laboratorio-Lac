@@ -48,14 +48,22 @@ async function administrativeGateway(): Promise<{ actorUserId: string; gateway: 
         const { error } = await admin.auth.admin.deleteUser(userId);
         return { error: error?.message ?? null };
       },
-      audit: async (event) => {
-        const { error } = await admin.from("access_audit_events").insert({
+      createAuditIntent: async (event) => {
+        const { data, error } = await admin.from("access_audit_events").insert({
           action: event.action,
           actor_user_id: event.actorUserId,
           target_user_id: event.targetUserId,
           target_email: event.targetEmail,
-        });
-        return { error: error?.message ?? null };
+          status: "pending",
+        }).select("id").maybeSingle();
+        return { auditId: data ? String(data.id) : null, error: error?.message ?? null };
+      },
+      completeAuditIntent: async (auditId, targetUserId) => {
+        const { data, error } = await admin.from("access_audit_events").update({
+          target_user_id: targetUserId,
+          status: "completed",
+        }).eq("id", auditId).eq("status", "pending").select("id").maybeSingle();
+        return { error: error?.message ?? (data ? null : "Evento de auditoria não encontrado.") };
       },
     },
   };

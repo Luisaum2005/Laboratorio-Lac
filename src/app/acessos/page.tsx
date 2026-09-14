@@ -18,7 +18,7 @@ export default async function AccessAdministrationPage({
   const admin = createSupabaseAdminClient();
   const [{ data: usersData, error: usersError }, { data: events, error: eventsError }] = await Promise.all([
     admin.auth.admin.listUsers({ page: 1, perPage: 1000 }),
-    admin.from("access_audit_events").select("id,action,target_email,created_at").order("created_at", { ascending: false }).limit(100),
+    admin.from("access_audit_events").select("id,action,status,target_email,created_at").order("created_at", { ascending: false }).limit(100),
   ]);
   if (usersError) throw usersError;
   if (eventsError) throw eventsError;
@@ -32,8 +32,8 @@ export default async function AccessAdministrationPage({
     }];
   });
   const auditEvents = (events ?? []).flatMap((event) => {
-    if (event.action !== "invited" && event.action !== "revoked") return [];
-    return [{ id: String(event.id), action: event.action, targetEmail: event.target_email, createdAt: event.created_at }];
+    if ((event.action !== "invited" && event.action !== "revoked") || (event.status !== "pending" && event.status !== "completed")) return [];
+    return [{ id: String(event.id), action: event.action, status: event.status, targetEmail: event.target_email, createdAt: event.created_at }];
   });
 
   return (

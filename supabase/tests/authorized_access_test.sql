@@ -1,5 +1,11 @@
 begin;
-select plan(3);
+select plan(4);
+
+select lives_ok(
+  $$insert into public.access_audit_events (action, actor_user_id, target_user_id, target_email, status)
+    values ('invited', '00000000-0000-0000-0000-000000000001', null, 'pendente@exemplo.com', 'pending')$$,
+  'a intenção de convite pode ser auditada antes de existir o usuário'
+);
 
 set local role authenticated;
 set local request.jwt.claims = '{"sub":"00000000-0000-0000-0000-000000000001","app_metadata":{"role":"operator"}}';

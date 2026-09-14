@@ -1,7 +1,7 @@
 export type AccessAuditEvent = {
   action: "invited" | "revoked";
   actorUserId: string;
-  targetUserId: string;
+  targetUserId: string | null;
   targetEmail: string;
 };
 
@@ -10,7 +10,8 @@ export type AuthorizedAccessGateway = {
   targetRole(userId: string): Promise<{ role: "admin" | "operator" | null; email: string | null; error: string | null }>;
   administratorCount(): Promise<{ count: number | null; error: string | null }>;
   revoke(userId: string): Promise<{ error: string | null }>;
-  audit(event: AccessAuditEvent): Promise<{ error: string | null }>;
+  createAuditIntent(event: AccessAuditEvent): Promise<{ auditId: string | null; error: string | null }>;
+  completeAuditIntent(auditId: string, targetUserId: string): Promise<{ error: string | null }>;
 };
 
 export type AuthorizedAccessResult =
@@ -35,19 +36,24 @@ export async function inviteAuthorizedEmail(
     return { status: "invalid", message: "Informe um e-mail válido." };
   }
 
+  const auditIntent = await gateway.createAuditIntent({
+    action: "invited",
+    actorUserId: input.actorUserId,
+    targetUserId: null,
+    targetEmail: email,
+  });
+  if (!auditIntent.auditId || auditIntent.error) {
+    return { status: "error", message: "Não foi possível registrar a auditoria do convite." };
+  }
+
   const invitation = await gateway.invite(email);
   if (!invitation.userId || invitation.error) {
     return { status: "error", message: "Não foi possível enviar o convite." };
   }
 
-  const audit = await gateway.audit({
-    action: "invited",
-    actorUserId: input.actorUserId,
-    targetUserId: invitation.userId,
-    targetEmail: email,
-  });
+  const audit = await gateway.completeAuditIntent(auditIntent.auditId, invitation.userId);
   return audit.error
-    ? { status: "error", message: "O convite foi criado, mas a auditoria falhou." }
+    ? { status: "error", message: "O convite foi criado e ficou registrado como auditoria pendente." }
     : { status: "success" };
 }
 
@@ -76,18 +82,23 @@ export async function revokeAuthorizedUser(
     }
   }
 
-  const revoked = await gateway.revoke(input.targetUserId);
-  if (revoked.error) {
-    return { status: "error", message: "Não foi possível revogar o acesso." };
-  }
-
-  const audit = await gateway.audit({
+  const auditIntent = await gateway.createAuditIntent({
     action: "revoked",
     actorUserId: input.actorUserId,
     targetUserId: input.targetUserId,
     targetEmail: normalizeEmail(target.email),
   });
+  if (!auditIntent.auditId || auditIntent.error) {
+    return { status: "error", message: "Não foi possível registrar a auditoria da revogação." };
+  }
+
+  const revoked = await gateway.revoke(input.targetUserId);
+  if (revoked.error) {
+    return { status: "error", message: "Não foi possível revogar o acesso." };
+  }
+
+  const audit = await gateway.completeAuditIntent(auditIntent.auditId, input.targetUserId);
   return audit.error
-    ? { status: "error", message: "O acesso foi revogado, mas a auditoria falhou." }
+    ? { status: "error", message: "O acesso foi revogado e ficou registrado como auditoria pendente." }
     : { status: "success" };
 }

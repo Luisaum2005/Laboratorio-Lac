@@ -3,7 +3,7 @@ import Link from "next/link";
 type AccessAdministrationPageViewProps = {
   currentUserId: string;
   users: Array<{ id: string; email: string; role: "admin" | "operator" }>;
-  events: Array<{ id: string; action: "invited" | "revoked"; targetEmail: string; createdAt: string }>;
+  events: Array<{ id: string; action: "invited" | "revoked"; status: "pending" | "completed"; targetEmail: string; createdAt: string }>;
   inviteAction?: (formData: FormData) => Promise<void>;
   revokeAction?: (formData: FormData) => Promise<void>;
   notice?: { tone: "success" | "error"; message: string };
@@ -60,7 +60,7 @@ export function AccessAdministrationPageView({
         <ul className="audit-events">
           {events.map((event) => (
             <li key={event.id}>
-              {event.action === "invited" ? "Convite enviado para" : "Acesso revogado de"} {event.targetEmail}
+              {event.status === "pending" ? "Auditoria pendente para" : event.action === "invited" ? "Convite enviado para" : "Acesso revogado de"} {event.targetEmail}
               <time dateTime={event.createdAt}> — {new Date(event.createdAt).toLocaleString("pt-BR")}</time>
             </li>
           ))}

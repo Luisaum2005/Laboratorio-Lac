@@ -13,7 +13,7 @@ describe("administração de acessos", () => {
           { id: "admin-2", email: "segundo-admin@exemplo.com", role: "admin" },
           { id: "user-9", email: "pessoa@exemplo.com", role: "operator" },
         ]}
-        events={[{ id: "1", action: "invited", targetEmail: "pessoa@exemplo.com", createdAt: "2026-09-14T10:00:00Z" }]}
+        events={[{ id: "1", action: "invited", status: "completed", targetEmail: "pessoa@exemplo.com", createdAt: "2026-09-14T10:00:00Z" }]}
       />,
     );
 
