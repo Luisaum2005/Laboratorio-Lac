@@ -1,7 +1,14 @@
 import { CatalogPageView, type CatalogExam } from "@/features/catalog/catalog-page";
+import { createExamAction } from "@/features/catalog/catalog-actions";
+import { catalogNotice } from "@/features/catalog/catalog-notices";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export default async function CatalogPage() {
+export default async function CatalogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ success?: string; error?: string }>;
+}) {
+  const query = await searchParams;
   const supabase = await createSupabaseServerClient();
   const [{ data: claimsData }, { data, error }] = await Promise.all([
     supabase.auth.getClaims(),
@@ -18,5 +25,12 @@ export default async function CatalogPage() {
     mnemonic: exam.mnemonic,
   }));
 
-  return <CatalogPageView viewerRole={viewerRole} exams={exams} />;
+  return (
+    <CatalogPageView
+      viewerRole={viewerRole}
+      exams={exams}
+      createExamAction={createExamAction}
+      notice={catalogNotice(query)}
+    />
+  );
 }

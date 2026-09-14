@@ -21,7 +21,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -126,4 +127,172 @@ h1 {
 
 .login-form button:hover {
   background: var(--brand-strong);
+}
+
+.catalog-shell {
+  width: min(100% - 2rem, 76rem);
+  margin: 0 auto;
+  padding: 3rem 0 5rem;
+}
+
+.catalog-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.catalog-header .eyebrow {
+  width: 100%;
+}
+
+.role-badge {
+  margin: 0;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: #dcefe8;
+  color: var(--brand-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.notice {
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+}
+
+.notice-success {
+  background: #dcefe8;
+  color: var(--brand-strong);
+}
+
+.notice-error {
+  background: #fff0ed;
+  color: #8d2f22;
+}
+
+.governance-card,
+.table-card {
+  margin: 1.25rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: 0 0.7rem 2rem rgba(23, 51, 45, 0.06);
+}
+
+.governance-card fieldset,
+fieldset.governance-card {
+  border: 0;
+}
+
+.governance-card legend {
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(9rem, 2fr) minmax(7rem, 1fr);
+  gap: 0.5rem 1rem;
+  margin: 1rem 0;
+}
+
+.form-grid label {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.form-grid input,
+.governance-card input,
+.governance-card select {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  background: #fbfdfc;
+}
+
+.governance-card button,
+.danger-zone button {
+  min-height: 2.5rem;
+  padding: 0.6rem 0.9rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background: var(--brand);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.danger-zone button {
+  background: #9d3729;
+}
+
+.governance-card ul {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0;
+  list-style: none;
+}
+
+.governance-card li,
+.governance-card > form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.table-card {
+  overflow-x: auto;
+}
+
+.catalog-count {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.85rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+a {
+  color: var(--brand-strong);
+  font-weight: 700;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 40rem) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .governance-card li,
+  .governance-card > form {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
