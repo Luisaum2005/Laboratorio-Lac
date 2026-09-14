@@ -25,6 +25,7 @@ export function CatalogPageView({
         <p className="eyebrow">Laboratório LAC</p>
         <h1>Catálogo de exames</h1>
         <p className="role-badge">{viewerRole === "admin" ? "Administrador" : "Operador"}</p>
+        <Link href="/conferencias">Iniciar conferência</Link>
         {viewerRole === "admin" ? <Link href="/acessos">Gerenciar acessos</Link> : null}
       </header>
 

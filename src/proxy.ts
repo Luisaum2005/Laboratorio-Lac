@@ -20,7 +20,9 @@ export async function proxy(request: NextRequest) {
   });
 
   const { data } = await supabase.auth.getClaims();
-  const isProtectedRoute = request.nextUrl.pathname.startsWith("/catalogo") || request.nextUrl.pathname.startsWith("/acessos");
+  const isProtectedRoute = request.nextUrl.pathname.startsWith("/catalogo")
+    || request.nextUrl.pathname.startsWith("/acessos")
+    || request.nextUrl.pathname.startsWith("/conferencias");
   const userId = data?.claims?.sub;
   let hasActiveProfile = false;
 
@@ -41,5 +43,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/catalogo/:path*", "/acessos/:path*", "/login"],
+  matcher: ["/catalogo/:path*", "/acessos/:path*", "/conferencias/:path*", "/login"],
 };
