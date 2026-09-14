@@ -30,4 +30,17 @@ describe("telas de início da conferência", () => {
   it("não aceita valores herdados como mensagem de erro", () => {
     expect(conferenceNotice({ error: "__proto__" })).toBeUndefined();
   });
+
+  it("permite repetir o processamento de um arquivo privado já enviado", () => {
+    render(
+      <ConferenceUploadPageView
+        conference={{ id: "0c8a2252-7229-418d-a478-4a97d568685f", status: "draft", createdAt: "2026-09-14T10:00:00Z", hasSourceFile: true }}
+        uploadAction={vi.fn()}
+        retryProcessingAction={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByRole("button", { name: "Tentar iniciar processamento" })).toBeVisible();
+    expect(screen.queryByLabelText("Arquivo da ficha")).not.toBeInTheDocument();
+  });
 });

@@ -1,10 +1,21 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { startConferenceProcessing } from "./conference-upload";
+import { requestConferenceProcessing, startConferenceProcessing } from "./conference-upload";
 
 const onePagePdf = new Uint8Array([37, 80, 68, 70, 45, 49, 46, 55]);
 
 describe("início seguro da conferência", () => {
+  it("gera uma URL assinada nova para repetir o processamento sem reenviar o PDF", async () => {
+    const createSignedUrl = vi.fn().mockResolvedValue({ signedUrl: "https://storage.test/nova-url", error: null });
+    const requestProcessing = vi.fn().mockResolvedValue({ status: "processing", error: null });
+
+    const result = await requestConferenceProcessing("conferencia-9/original.pdf", { createSignedUrl, requestProcessing });
+
+    expect(result).toEqual({ status: "processing" });
+    expect(createSignedUrl).toHaveBeenCalledWith("conferencia-9/original.pdf", 300);
+    expect(requestProcessing).toHaveBeenCalledWith("https://storage.test/nova-url");
+  });
+
   it("recusa arquivos que não são PDF antes de iniciar o upload", async () => {
     const upload = vi.fn();
 

@@ -57,10 +57,12 @@ export function ConferenceListPageView({
 export function ConferenceUploadPageView({
   conference,
   uploadAction,
+  retryProcessingAction,
   notice,
 }: {
   conference: ConferenceSummary;
   uploadAction: (formData: FormData) => Promise<void>;
+  retryProcessingAction?: (formData: FormData) => Promise<void>;
   notice?: Notice;
 }) {
   const processing = conference.status === "processing";
@@ -81,6 +83,12 @@ export function ConferenceUploadPageView({
         <section className="governance-card" aria-labelledby="processing-heading">
           <h2 id="processing-heading">{processing ? "A ficha está em processamento" : "A ficha está pronta para processamento"}</h2>
           <p>{processing ? "O arquivo foi guardado em área privada. A próxima etapa mostrará a leitura dos dados extraídos." : "O arquivo foi guardado em área privada. Ele será encaminhado ao serviço de leitura assim que esse serviço estiver disponível."}</p>
+          {awaitingProcessing && retryProcessingAction ? (
+            <form action={retryProcessingAction}>
+              <input type="hidden" name="conferenceId" value={conference.id} />
+              <button type="submit">Tentar iniciar processamento</button>
+            </form>
+          ) : null}
         </section>
       ) : (
         <form action={uploadAction} className="governance-card conference-upload-form">

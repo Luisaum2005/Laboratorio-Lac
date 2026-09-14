@@ -24,6 +24,21 @@ export type ConferenceUploadResult =
   | { status: "invalid"; reason: "not_pdf" | "too_large" | "invalid_pdf" | "too_many_pages" }
   | { status: "error"; reason: "upload_failed" | "upload_record_failed" | "processing_unavailable" };
 
+export type ConferenceProcessingGateway = Pick<ConferenceUploadGateway, "createSignedUrl" | "requestProcessing">;
+
+export async function requestConferenceProcessing(
+  objectPath: string,
+  gateway: ConferenceProcessingGateway,
+): Promise<ConferenceUploadResult> {
+  const signed = await gateway.createSignedUrl(objectPath, PROCESSING_URL_TTL_SECONDS);
+  if (signed.error || !signed.signedUrl) return { status: "error", reason: "processing_unavailable" };
+
+  const request = await gateway.requestProcessing(signed.signedUrl);
+  if (request.error) return { status: "error", reason: "processing_unavailable" };
+
+  return { status: request.status };
+}
+
 function hasPdfHeader(bytes: Uint8Array) {
   return bytes.length >= 5
     && bytes[0] === 0x25
@@ -65,11 +80,5 @@ export async function startConferenceProcessing(
     return { status: "error", reason: "upload_record_failed" };
   }
 
-  const signed = await gateway.createSignedUrl(objectPath, PROCESSING_URL_TTL_SECONDS);
-  if (signed.error || !signed.signedUrl) return { status: "error", reason: "processing_unavailable" };
-
-  const request = await gateway.requestProcessing(signed.signedUrl);
-  if (request.error) return { status: "error", reason: "processing_unavailable" };
-
-  return { status: request.status };
+  return requestConferenceProcessing(objectPath, gateway);
 }

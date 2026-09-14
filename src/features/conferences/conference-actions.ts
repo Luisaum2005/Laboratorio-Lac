@@ -7,7 +7,7 @@ import { PDFDocument } from "pdf-lib";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-import { startConferenceProcessing } from "./conference-upload";
+import { requestConferenceProcessing, startConferenceProcessing } from "./conference-upload";
 
 const CONFERENCE_BUCKET = "unimed-guides";
 
@@ -23,6 +23,36 @@ async function currentOperatorId() {
 
 function isConferenceId(value: FormDataEntryValue | null): value is string {
   return typeof value === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
+}
+
+async function dispatchConferenceProcessing(
+  conferenceId: string,
+  userId: string,
+  signedUrl: string,
+) {
+  const admin = createSupabaseAdminClient();
+  const processorUrl = process.env.PDF_PROCESSOR_URL;
+  const processorSecret = process.env.PDF_PROCESSOR_SHARED_SECRET;
+  if (processorUrl) {
+    if (!processorSecret) return { status: "awaiting_processing" as const, error: null };
+    try {
+      const response = await fetch(processorUrl, {
+        method: "POST",
+        headers: { authorization: `Bearer ${processorSecret}`, "content-type": "application/json" },
+        body: JSON.stringify({ conferenceId, sourceUrl: signedUrl }),
+      });
+      if (!response.ok) return { status: "awaiting_processing" as const, error: "O serviço de processamento não respondeu." };
+    } catch {
+      return { status: "awaiting_processing" as const, error: "O serviço de processamento está indisponível." };
+    }
+  } else {
+    return { status: "awaiting_processing" as const, error: null };
+  }
+
+  const { error } = await admin.from("conferences").update({
+    processing_requested_at: new Date().toISOString(), status: "processing",
+  }).eq("id", conferenceId).eq("created_by", userId);
+  return { status: "processing" as const, error: error?.message ?? null };
 }
 
 export async function createConferenceDraftAction() {
@@ -73,41 +103,35 @@ export async function uploadConferenceFileAction(formData: FormData) {
       const { data, error } = await admin.storage.from(CONFERENCE_BUCKET).createSignedUrl(objectPath, expiresInSeconds);
       return { signedUrl: data?.signedUrl ?? null, error: error?.message ?? null };
     },
-    requestProcessing: async (signedUrl) => {
-      const processorUrl = process.env.PDF_PROCESSOR_URL;
-      const processorSecret = process.env.PDF_PROCESSOR_SHARED_SECRET;
-      if (processorUrl) {
-        if (!processorSecret) return { status: "awaiting_processing" as const, error: null };
-        try {
-          const response = await fetch(processorUrl, {
-            method: "POST",
-            headers: {
-              authorization: `Bearer ${processorSecret}`,
-              "content-type": "application/json",
-            },
-            // The parser receives only a short-lived, server-generated URL. It is never
-            // written to the database, logged, or sent back to the browser.
-            body: JSON.stringify({ conferenceId, sourceUrl: signedUrl }),
-          });
-          if (!response.ok) return { status: "awaiting_processing" as const, error: "O serviço de processamento não respondeu." };
-        } catch {
-          return { status: "awaiting_processing" as const, error: "O serviço de processamento está indisponível." };
-        }
-      } else {
-        return { status: "awaiting_processing" as const, error: null };
-      }
-
-      // Until ticket #6 enables the parser endpoint, retain a durable, auditable request
-      // marker. The future worker will receive a newly generated signed URL, never a URL
-      // stored with the clinical record.
-      const { error } = await admin.from("conferences").update({
-        processing_requested_at: new Date().toISOString(),
-        status: "processing",
-      }).eq("id", conferenceId).eq("created_by", userId);
-      return { status: "processing" as const, error: error?.message ?? null };
-    },
+    requestProcessing: (signedUrl) => dispatchConferenceProcessing(conferenceId, userId, signedUrl),
   });
   if (result.status === "invalid" || result.status === "error") redirect(`/conferencias/${conferenceId}?error=${result.reason}`);
+  revalidatePath("/conferencias");
+  revalidatePath(`/conferencias/${conferenceId}`);
+  redirect(`/conferencias/${conferenceId}?success=${result.status}`);
+}
+
+export async function retryConferenceProcessingAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  if (!isConferenceId(conferenceId)) redirect("/conferencias?error=not_found");
+
+  const admin = createSupabaseAdminClient();
+  const { data: conference, error } = await admin.from("conferences")
+    .select("status,source_file_path").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (error || !conference || conference.status !== "draft" || !conference.source_file_path) {
+    redirect(`/conferencias/${conferenceId}?error=not_found`);
+  }
+
+  const result = await requestConferenceProcessing(conference.source_file_path, {
+    createSignedUrl: async (objectPath, expiresInSeconds) => {
+      const { data, error: signedError } = await admin.storage.from(CONFERENCE_BUCKET).createSignedUrl(objectPath, expiresInSeconds);
+      return { signedUrl: data?.signedUrl ?? null, error: signedError?.message ?? null };
+    },
+    requestProcessing: (signedUrl) => dispatchConferenceProcessing(conferenceId, userId, signedUrl),
+  });
+  if (result.status === "error") redirect(`/conferencias/${conferenceId}?error=${result.reason}`);
+
   revalidatePath("/conferencias");
   revalidatePath(`/conferencias/${conferenceId}`);
   redirect(`/conferencias/${conferenceId}?success=${result.status}`);
