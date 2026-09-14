@@ -45,6 +45,7 @@ describe("catálogo de exames", () => {
     expect(screen.getByRole("textbox", { name: "Nome do exame" })).toBeVisible();
     expect(screen.getByRole("textbox", { name: "Mnemônico" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Adicionar exame" })).toBeVisible();
+    expect(screen.getByRole("link", { name: "Gerenciar acessos" })).toHaveAttribute("href", "/acessos");
     expect(screen.getByRole("link", { name: "Gerenciar HEMOGRAMA COMPLETO" })).toHaveAttribute(
       "href",
       "/catalogo/exam-hm",

@@ -6,6 +6,13 @@ select has_table('public', 'exams', 'o catálogo canônico existe');
 insert into public.exams (name, mnemonic)
 values ('EXAME TESTE CONTROLE DE ACESSO', '__RLS_TEST__');
 
+set local session_replication_role = replica;
+insert into public.profiles (user_id, display_name, role)
+values
+  ('00000000-0000-0000-0000-000000000001', 'Operador de teste', 'operator'),
+  ('00000000-0000-0000-0000-000000000002', 'Administrador de teste', 'admin');
+set local session_replication_role = origin;
+
 set local role anon;
 select throws_ok(
   'select * from public.exams',

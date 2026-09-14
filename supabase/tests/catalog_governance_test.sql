@@ -17,6 +17,13 @@ from public.exams package, public.exams component
 where package.mnemonic = '__GOV_PACKAGE__'
   and component.mnemonic = '__GOV_COMPONENT__';
 
+set local session_replication_role = replica;
+insert into public.profiles (user_id, display_name, role)
+values
+  ('00000000-0000-0000-0000-000000000001', 'Operador de teste', 'operator'),
+  ('00000000-0000-0000-0000-000000000002', 'Administrador de teste', 'admin');
+set local session_replication_role = origin;
+
 set local role authenticated;
 set local request.jwt.claims = '{"sub":"00000000-0000-0000-0000-000000000001","app_metadata":{"role":"operator"}}';
 

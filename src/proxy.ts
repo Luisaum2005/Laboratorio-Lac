@@ -20,11 +20,20 @@ export async function proxy(request: NextRequest) {
   });
 
   const { data } = await supabase.auth.getClaims();
-  if (!data?.claims && request.nextUrl.pathname.startsWith("/catalogo")) {
+  const isProtectedRoute = request.nextUrl.pathname.startsWith("/catalogo") || request.nextUrl.pathname.startsWith("/acessos");
+  const userId = data?.claims?.sub;
+  let hasActiveProfile = false;
+
+  if (userId) {
+    const { data: profile } = await supabase.from("profiles").select("user_id").eq("user_id", userId).maybeSingle();
+    hasActiveProfile = Boolean(profile);
+  }
+
+  if (isProtectedRoute && (!data?.claims || !hasActiveProfile)) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  if (data?.claims && request.nextUrl.pathname === "/login") {
+  if (data?.claims && hasActiveProfile && request.nextUrl.pathname === "/login") {
     return NextResponse.redirect(new URL("/catalogo", request.url));
   }
 
@@ -32,5 +41,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/catalogo/:path*", "/login"],
+  matcher: ["/catalogo/:path*", "/acessos/:path*", "/login"],
 };
