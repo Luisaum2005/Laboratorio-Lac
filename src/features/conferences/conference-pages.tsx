@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 export type ConferenceSummary = {
   id: string;
@@ -58,11 +59,13 @@ export function ConferenceUploadPageView({
   conference,
   uploadAction,
   retryProcessingAction,
+  procedureReview,
   notice,
 }: {
   conference: ConferenceSummary;
   uploadAction: (formData: FormData) => Promise<void>;
   retryProcessingAction?: (formData: FormData) => Promise<void>;
+  procedureReview?: ReactNode;
   notice?: Notice;
 }) {
   const processing = conference.status === "processing";
@@ -102,6 +105,7 @@ export function ConferenceUploadPageView({
           </fieldset>
         </form>
       )}
+      {procedureReview}
     </main>
   );
 }
