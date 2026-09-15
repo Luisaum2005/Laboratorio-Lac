@@ -22,6 +22,7 @@ type ParserResult = {
     description: string;
     requested_quantity: number;
     authorized_quantity: number;
+    is_authorized: boolean;
   }>;
 };
 

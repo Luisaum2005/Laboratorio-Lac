@@ -42,7 +42,12 @@ def extract_unimed_text_pages(text_pages: list[str]) -> dict:
         return {"status": "reading_unavailable", "reason": "text_unavailable"}
 
     last_page = text_pages[-1]
-    if "Procedimentos ou Itens Solicitados" not in last_page:
+    normalized_last_page = _normalize_for_matching(last_page)
+    if not re.search(
+        r"procedimentos(?:\s+|-)+ou(?:\s+|-)+itens(?:\s+|-)+solicitados",
+        normalized_last_page,
+        flags=re.IGNORECASE,
+    ):
         return {"status": "reading_unavailable", "reason": "unexpected_layout"}
 
     procedures = []
@@ -53,8 +58,6 @@ def extract_unimed_text_pages(text_pages: list[str]) -> dict:
             continue
         procedure_raw_text = raw_text[raw_text.find(match.group("code")):]
         authorized_quantity = int(match.group("authorized"))
-        if authorized_quantity <= 0:
-            continue
         procedures.append({
             "raw_text": procedure_raw_text,
             "page": len(text_pages),
@@ -62,6 +65,7 @@ def extract_unimed_text_pages(text_pages: list[str]) -> dict:
             "description": match.group("description").strip(),
             "requested_quantity": int(match.group("requested")),
             "authorized_quantity": authorized_quantity,
+            "is_authorized": authorized_quantity > 0,
         })
 
     if not procedures:

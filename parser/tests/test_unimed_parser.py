@@ -8,7 +8,7 @@ FIXTURE = Path(__file__).parent / "fixtures" / "unimed-guide-anonymized.pdf"
 
 
 class UnimedParserTest(unittest.TestCase):
-    def test_extracts_metadata_and_authorized_procedures_from_anonymized_unimed_guide(self):
+    def test_extracts_metadata_and_all_procedures_from_anonymized_unimed_guide(self):
         result = extract_unimed_guide(FIXTURE)
 
         self.assertEqual(result["status"], "ok")
@@ -29,6 +29,7 @@ class UnimedParserTest(unittest.TestCase):
             "description": "HEMOGRAMA COMPLETO",
             "requested_quantity": 1,
             "authorized_quantity": 1,
+            "is_authorized": True,
         },
         {
             "raw_text": "40301583 - COLESTEROL HDL 1 1",
@@ -37,6 +38,16 @@ class UnimedParserTest(unittest.TestCase):
             "description": "COLESTEROL HDL",
             "requested_quantity": 1,
             "authorized_quantity": 1,
+            "is_authorized": True,
+        },
+        {
+            "raw_text": "40301605 - COLESTEROL TOTAL 2 0",
+            "page": 2,
+            "code": "40301605",
+            "description": "COLESTEROL TOTAL",
+            "requested_quantity": 2,
+            "authorized_quantity": 0,
+            "is_authorized": False,
         },
         ])
 
@@ -65,4 +76,13 @@ class UnimedParserTest(unittest.TestCase):
             "description": "HEMOGRAMA COMPLETO",
             "requested_quantity": 1,
             "authorized_quantity": 1,
+            "is_authorized": True,
         }])
+
+    def test_normalizes_the_last_page_header_before_validating_layout(self):
+        result = extract_unimed_text_pages([
+            "10 - Nome: PACIENTE",
+            "procedimentos   ou itens   solicitados\n40304361 - HEMOGRAMA COMPLETO 1 1",
+        ])
+
+        self.assertEqual(result["status"], "ok")
