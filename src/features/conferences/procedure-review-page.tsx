@@ -1,8 +1,8 @@
 export type ConferenceProcedureReviewDisplay = {
   id: string;
   rawText: string;
-  page: number;
-  code: string;
+  page: number | null;
+  code: string | null;
   description: string;
   requestedQuantity: number;
   authorizedQuantity: number;
@@ -10,6 +10,7 @@ export type ConferenceProcedureReviewDisplay = {
   resolution: "auto_matched" | "needs_review" | "confirmed" | "replaced" | "excluded";
   matchedExamId: string | null;
   resolvedExamId: string | null;
+  entryOrigin?: "extracted" | "manual";
 };
 
 export type SelectableExam = { id: string; name: string; mnemonic: string };
@@ -49,8 +50,8 @@ export function ConferenceProcedureReviewView({
             <div>
               <strong>{review.description}</strong>
               <span className={`status-badge status-${review.resolution}`}>{resolutionLabel(review.resolution)}</span>
-              <p>Texto extraído: {review.rawText}</p>
-              <p>Página {review.page} · Solicitado: {review.requestedQuantity} · Autorizado: {review.authorizedQuantity}</p>
+              <p>{review.entryOrigin === "manual" ? "Texto registrado manualmente" : "Texto extraído"}: {review.rawText}</p>
+              <p>{review.page === null ? "Preenchimento manual" : `Página ${review.page}`} · Solicitado: {review.requestedQuantity} · Autorizado: {review.authorizedQuantity}</p>
               {!review.isAuthorized ? <p>Item não autorizado na guia.</p> : null}
             </div>
             {review.resolution === "excluded" ? null : (

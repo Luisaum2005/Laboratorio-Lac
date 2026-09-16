@@ -11,6 +11,8 @@ import { requestConferenceProcessing, startConferenceProcessing } from "./confer
 import { createProcedureReviewStoreGateway } from "./procedure-review-gateway";
 import { decideProcedureReview } from "./procedure-review-decision";
 import { persistInitialProcedureReviews } from "./procedure-review-store";
+import { prepareManualProcedure } from "./manual-procedure";
+import { expandExplicitComposition, normalizeProcedureText } from "./procedure-review";
 
 const CONFERENCE_BUCKET = "unimed-guides";
 
@@ -259,4 +261,46 @@ export async function reviewConferenceProcedureAction(formData: FormData) {
 
   revalidatePath(`/conferencias/${conference.id}`);
   redirect(`/conferencias/${conference.id}?success=review_updated`);
+}
+
+export async function addManualProcedureAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  const manualText = formData.get("manualText");
+  const prepared = prepareManualProcedure({
+    examId: String(formData.get("examId") ?? ""),
+    requestedQuantity: String(formData.get("requestedQuantity") ?? ""),
+    authorizedQuantity: String(formData.get("authorizedQuantity") ?? ""),
+  });
+  if (!isUuid(conferenceId) || typeof manualText !== "string" || !manualText.trim() || prepared.status === "invalid") {
+    redirect(`/conferencias/${typeof conferenceId === "string" ? conferenceId : ""}?error=manual_invalid`);
+  }
+
+  const admin = createSupabaseAdminClient();
+  const { data: conference } = await admin.from("conferences")
+    .select("id,extraction_result").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (!conference || !isParserResult(conference.extraction_result) || conference.extraction_result.status !== "reading_unavailable") {
+    redirect(`/conferencias/${conferenceId}?error=manual_unavailable`);
+  }
+  const { data: exam } = await admin.from("exams").select("id,name").eq("id", prepared.procedure.examId).eq("active", true).maybeSingle();
+  if (!exam) redirect(`/conferencias/${conferenceId}?error=manual_invalid`);
+  const { data: latest } = await admin.from("conference_procedure_reviews").select("source_index")
+    .eq("conference_id", conferenceId).order("source_index", { ascending: false }).limit(1).maybeSingle();
+  const { data: compositions } = await admin.from("exam_compositions").select("package_exam_id,component_exam_id").eq("package_exam_id", exam.id);
+  const isAuthorized = prepared.procedure.isAuthorized;
+  const { error } = await admin.from("conference_procedure_reviews").insert({
+    conference_id: conferenceId, source_index: (latest?.source_index ?? -1) + 1,
+    raw_text: manualText.trim(), normalized_text: normalizeProcedureText(manualText), source_page: null, procedure_code: null,
+    procedure_description: exam.name, requested_quantity: prepared.procedure.requestedQuantity,
+    authorized_quantity: prepared.procedure.authorizedQuantity, is_authorized: isAuthorized,
+    resolution: isAuthorized ? "confirmed" : "excluded", matched_exam_id: null,
+    resolved_exam_id: isAuthorized ? exam.id : null,
+    expanded_exam_ids: isAuthorized ? expandExplicitComposition(String(exam.id), (compositions ?? []).map((row) => ({ packageExamId: String(row.package_exam_id), componentExamId: String(row.component_exam_id) }))) : [],
+    reviewed_by: userId, reviewed_at: new Date().toISOString(), entry_origin: "manual",
+  });
+  if (error) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
+  const completionError = await syncProcedureReviewCompletion(conferenceId, userId);
+  if (completionError) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
+  revalidatePath(`/conferencias/${conferenceId}`);
+  redirect(`/conferencias/${conferenceId}?success=manual_saved`);
 }
