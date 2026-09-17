@@ -299,8 +299,46 @@ export async function addManualProcedureAction(formData: FormData) {
     reviewed_by: userId, reviewed_at: new Date().toISOString(), entry_origin: "manual",
   });
   if (error) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
+  revalidatePath(`/conferencias/${conferenceId}`);
+  redirect(`/conferencias/${conferenceId}?success=manual_saved`);
+}
+
+export async function completeManualProcedureTranscriptionAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  if (!isUuid(conferenceId)) redirect("/conferencias?error=not_found");
+  const admin = createSupabaseAdminClient();
+  const { data: conference } = await admin.from("conferences").select("id,extraction_result")
+    .eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (!conference || !isParserResult(conference.extraction_result) || conference.extraction_result.status !== "reading_unavailable") {
+    redirect(`/conferencias/${conferenceId}?error=manual_unavailable`);
+  }
+  const { data: updated } = await admin.from("conferences").update({ manual_transcription_completed_at: new Date().toISOString() })
+    .eq("id", conferenceId).eq("created_by", userId).select("id").maybeSingle();
+  if (!updated) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
   const completionError = await syncProcedureReviewCompletion(conferenceId, userId);
   if (completionError) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
   revalidatePath(`/conferencias/${conferenceId}`);
-  redirect(`/conferencias/${conferenceId}?success=manual_saved`);
+  redirect(`/conferencias/${conferenceId}?success=manual_completed`);
+}
+
+export async function addMedicalRequestItemAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  const doctorName = formData.get("doctorName");
+  const rawText = formData.get("rawText");
+  const examId = formData.get("examId");
+  if (!isUuid(conferenceId) || !isExamId(examId) || typeof doctorName !== "string" || !doctorName.trim() || typeof rawText !== "string" || !rawText.trim()) {
+    redirect(`/conferencias/${typeof conferenceId === "string" ? conferenceId : ""}?error=medical_request_invalid`);
+  }
+  const admin = createSupabaseAdminClient();
+  const { data: conference } = await admin.from("conferences").select("id").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (!conference) redirect("/conferencias?error=not_found");
+  const { data: exam } = await admin.from("exams").select("id").eq("id", examId).eq("active", true).maybeSingle();
+  if (!exam) redirect(`/conferencias/${conferenceId}?error=medical_request_invalid`);
+  const { error: conferenceError } = await admin.from("conferences").update({ doctor_name: doctorName.trim(), doctor_is_manual: true }).eq("id", conferenceId).eq("created_by", userId);
+  const { error: itemError } = await admin.from("conference_medical_request_items").upsert({ conference_id: conferenceId, exam_id: exam.id, raw_text: rawText.trim(), created_by: userId }, { onConflict: "conference_id,exam_id" });
+  if (conferenceError || itemError) redirect(`/conferencias/${conferenceId}?error=medical_request_save_failed`);
+  revalidatePath(`/conferencias/${conferenceId}`);
+  redirect(`/conferencias/${conferenceId}?success=medical_request_saved`);
 }

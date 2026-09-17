@@ -8,6 +8,8 @@ const errorMessages: Record<string, string> = {
   processing_unavailable: "O arquivo foi preservado, mas não foi possível iniciar o processamento. Tente novamente.",
   review_invalid: "Selecione um exame canônico válido antes de confirmar o item.",
   review_update_failed: "Não foi possível salvar a revisão do procedimento. Tente novamente.",
+  medical_request_invalid: "Informe o médico, o texto do pedido e um exame ativo do catálogo.",
+  medical_request_save_failed: "Não foi possível salvar o exame do pedido médico. Tente novamente.",
   not_found: "Esta conferência não está disponível para o seu acesso.",
 };
 
@@ -17,6 +19,9 @@ export function conferenceNotice(query: { success?: string; error?: string }) {
   }
   if (query.success === "review_updated") {
     return { tone: "success" as const, message: "A revisão local do procedimento foi salva." };
+  }
+  if (query.success === "medical_request_saved") {
+    return { tone: "success" as const, message: "O exame do pedido médico foi salvo e comparado com a guia Unimed." };
   }
   if (query.success === "awaiting_processing") {
     return { tone: "success" as const, message: "Arquivo enviado com segurança e aguardando o processamento." };

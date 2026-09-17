@@ -1,13 +1,15 @@
-import type { SelectableExam } from "./procedure-review-page";
+export type SelectableExam = { id: string; name: string; mnemonic: string };
 
 export function ManualProcedureTranscriptionView({
   conferenceId,
   exams,
   saveAction,
+  completeAction,
 }: {
   conferenceId: string;
   exams: SelectableExam[];
   saveAction: (formData: FormData) => Promise<void>;
+  completeAction: (formData: FormData) => Promise<void>;
 }) {
   return (
     <section className="governance-card procedure-review-card" aria-labelledby="manual-procedure-heading">
@@ -27,6 +29,10 @@ export function ManualProcedureTranscriptionView({
         <label htmlFor="authorized-quantity">Quantidade autorizada</label>
         <input id="authorized-quantity" name="authorizedQuantity" type="number" min="0" step="1" required />
         <button type="submit">Adicionar procedimento manual</button>
+      </form>
+      <form action={completeAction}>
+        <input type="hidden" name="conferenceId" value={conferenceId} />
+        <button type="submit">Concluir transcrição manual</button>
       </form>
     </section>
   );

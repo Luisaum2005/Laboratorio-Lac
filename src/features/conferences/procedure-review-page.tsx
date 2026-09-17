@@ -13,7 +13,9 @@ export type ConferenceProcedureReviewDisplay = {
   entryOrigin?: "extracted" | "manual";
 };
 
-export type SelectableExam = { id: string; name: string; mnemonic: string };
+import type { SelectableExam } from "./manual-procedure-page";
+
+export type { SelectableExam } from "./manual-procedure-page";
 
 function resolutionLabel(resolution: ConferenceProcedureReviewDisplay["resolution"]) {
   const labels = {

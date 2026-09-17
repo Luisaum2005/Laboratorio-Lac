@@ -61,6 +61,7 @@ export function ConferenceUploadPageView({
   retryProcessingAction,
   procedureReview,
   manualTranscription,
+  medicalRequest,
   notice,
 }: {
   conference: ConferenceSummary;
@@ -68,6 +69,7 @@ export function ConferenceUploadPageView({
   retryProcessingAction?: (formData: FormData) => Promise<void>;
   procedureReview?: ReactNode;
   manualTranscription?: ReactNode;
+  medicalRequest?: ReactNode;
   notice?: Notice;
 }) {
   const processing = conference.status === "processing";
@@ -109,6 +111,7 @@ export function ConferenceUploadPageView({
       )}
       {procedureReview}
       {manualTranscription}
+      {medicalRequest}
     </main>
   );
 }
