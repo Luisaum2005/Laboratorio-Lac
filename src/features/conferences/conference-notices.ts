@@ -10,6 +10,12 @@ const errorMessages: Record<string, string> = {
   review_update_failed: "Não foi possível salvar a revisão do procedimento. Tente novamente.",
   medical_request_invalid: "Informe o médico, o texto do pedido e um exame ativo do catálogo.",
   medical_request_save_failed: "Não foi possível salvar o exame do pedido médico. Tente novamente.",
+  finalization_pending_review: "Conclua a revisão dos procedimentos da guia antes de finalizar.",
+  finalization_medical_request: "Informe o médico e ao menos um exame do pedido médico antes de finalizar.",
+  finalization_not_authorized: "Há exame do pedido médico sem autorização na guia.",
+  finalization_confirmation_required: "Confirme que revisou exames e divergências antes de finalizar.",
+  finalization_unavailable: "Esta conferência já foi finalizada ou não pode ser finalizada agora.",
+  finalization_failed: "Não foi possível gerar a ficha LAC. Tente novamente.",
   not_found: "Esta conferência não está disponível para o seu acesso.",
 };
 
@@ -22,6 +28,9 @@ export function conferenceNotice(query: { success?: string; error?: string }) {
   }
   if (query.success === "medical_request_saved") {
     return { tone: "success" as const, message: "O exame do pedido médico foi salvo e comparado com a guia Unimed." };
+  }
+  if (query.success === "finalized") {
+    return { tone: "success" as const, message: "Conferência finalizada e ficha LAC gerada com sucesso." };
   }
   if (query.success === "awaiting_processing") {
     return { tone: "success" as const, message: "Arquivo enviado com segurança e aguardando o processamento." };

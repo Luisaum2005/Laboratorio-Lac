@@ -13,8 +13,12 @@ import { decideProcedureReview } from "./procedure-review-decision";
 import { persistInitialProcedureReviews } from "./procedure-review-store";
 import { prepareManualProcedure } from "./manual-procedure";
 import { expandExplicitComposition, normalizeProcedureText } from "./procedure-review";
+import { compareMedicalRequest } from "./medical-request-comparison";
+import { prepareConferenceFinalization } from "./conference-finalization";
+import { createLacFormPdf } from "./lac-form-pdf";
 
 const CONFERENCE_BUCKET = "unimed-guides";
+const LAC_FORMS_BUCKET = "lac-forms";
 
 type ParserResult = {
   status: "ok" | "reading_unavailable";
@@ -341,4 +345,77 @@ export async function addMedicalRequestItemAction(formData: FormData) {
   if (conferenceError || itemError) redirect(`/conferencias/${conferenceId}?error=medical_request_save_failed`);
   revalidatePath(`/conferencias/${conferenceId}`);
   redirect(`/conferencias/${conferenceId}?success=medical_request_saved`);
+}
+
+function finalizationError(reason: string) {
+  const errors: Record<string, string> = {
+    pending_guide_review: "finalization_pending_review",
+    medical_request_incomplete: "finalization_medical_request",
+    not_authorized_request: "finalization_not_authorized",
+    confirmation_required: "finalization_confirmation_required",
+  };
+  return errors[reason] ?? "finalization_failed";
+}
+
+function extractionMetadata(value: unknown) {
+  if (!isParserResult(value) || !value.metadata) return {} as Record<string, string | null>;
+  return value.metadata;
+}
+
+export async function finalizeConferenceAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  if (!isUuid(conferenceId)) redirect("/conferencias?error=not_found");
+
+  const admin = createSupabaseAdminClient();
+  const [{ data: conference }, { data: reviews }, { data: requestItems }, { data: exams }] = await Promise.all([
+    admin.from("conferences").select("id,status,doctor_name,extraction_result").eq("id", conferenceId).eq("created_by", userId).maybeSingle(),
+    admin.from("conference_procedure_reviews").select("resolution,is_authorized,expanded_exam_ids").eq("conference_id", conferenceId),
+    admin.from("conference_medical_request_items").select("id,exam_id,raw_text").eq("conference_id", conferenceId),
+    admin.from("exams").select("id,name,mnemonic").eq("active", true),
+  ]);
+  if (!conference || conference.status === "finalized") redirect(`/conferencias/${conferenceId}?error=finalization_unavailable`);
+  const examsById = new Map((exams ?? []).map((exam) => [String(exam.id), { examId: String(exam.id), name: exam.name, mnemonic: exam.mnemonic }]));
+  const comparison = compareMedicalRequest((requestItems ?? []).map((item) => ({ examId: String(item.exam_id), rawText: item.raw_text })), (reviews ?? []).map((review) => ({ expandedExamIds: review.expanded_exam_ids?.map(String) ?? [], isAuthorized: review.is_authorized, resolution: review.resolution })));
+  const request = comparison.flatMap((item) => {
+    const exam = examsById.get(item.examId);
+    return exam ? [{ ...exam, status: item.status }] : [];
+  });
+  const requestExamIds = new Set(request.map((item) => item.examId));
+  const extraIds = [...new Set((reviews ?? []).flatMap((review) => review.is_authorized && review.resolution !== "needs_review" && review.resolution !== "excluded" ? review.expanded_exam_ids?.map(String) ?? [] : []))].filter((id) => !requestExamIds.has(id));
+  const extras = extraIds.flatMap((id) => examsById.get(id) ? [examsById.get(id)!] : []);
+  const selectedExtraExamIds = formData.getAll("selectedExtraExamIds").filter((value): value is string => typeof value === "string" && extraIds.includes(value));
+  const finalization = prepareConferenceFinalization({
+    confirmationAccepted: formData.get("confirmationAccepted") === "yes",
+    doctorName: conference.doctor_name,
+    hasPendingGuideReview: (reviews ?? []).some((review) => review.resolution === "needs_review"),
+    requestItems: request,
+    authorizedExtras: extras,
+    selectedExtraExamIds,
+  });
+  if (finalization.status === "blocked") redirect(`/conferencias/${conferenceId}?error=${finalizationError(finalization.reason)}`);
+
+  const metadata = extractionMetadata(conference.extraction_result);
+  const divergences = request.filter((item) => item.status === "not_authorized").map(({ status: _status, ...item }) => item);
+  const selectedExtras = extras.filter((item) => selectedExtraExamIds.includes(item.examId));
+  const pdf = await createLacFormPdf({
+    patientName: metadata.patient_name ?? null, doctorName: conference.doctor_name!,
+    guideNumber: metadata.guide_number ?? null, password: metadata.password ?? null,
+    passwordValidUntil: metadata.password_valid_until ?? null, authorizationDate: metadata.authorization_date ?? null,
+    requestDate: metadata.request_date ?? null, released: finalization.released.filter((item) => item.origin === "medical_request"), authorizedExtras: selectedExtras, divergences,
+  });
+  const objectPath = `${conferenceId}/ficha-lac.pdf`;
+  const { error: uploadError } = await admin.storage.from(LAC_FORMS_BUCKET).upload(objectPath, pdf, { contentType: "application/pdf", upsert: false });
+  if (uploadError) redirect(`/conferencias/${conferenceId}?error=finalization_failed`);
+  const snapshot = { metadata, released: finalization.released, authorizedExtras: selectedExtras, divergences };
+  const { data: updated, error: updateError } = await admin.from("conferences").update({
+    status: "finalized", finalized_at: new Date().toISOString(), finalized_by: userId, final_pdf_path: objectPath, final_snapshot: snapshot,
+  }).eq("id", conferenceId).eq("created_by", userId).eq("status", conference.status).select("id").maybeSingle();
+  if (updateError || !updated) {
+    await admin.storage.from(LAC_FORMS_BUCKET).remove([objectPath]);
+    redirect(`/conferencias/${conferenceId}?error=finalization_failed`);
+  }
+  revalidatePath("/conferencias");
+  revalidatePath(`/conferencias/${conferenceId}`);
+  redirect(`/conferencias/${conferenceId}?success=finalized`);
 }

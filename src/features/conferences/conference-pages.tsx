@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export type ConferenceSummary = {
   id: string;
-  status: "draft" | "processing";
+  status: "draft" | "processing" | "finalized";
   createdAt: string;
   hasSourceFile?: boolean;
 };
@@ -43,7 +43,7 @@ export function ConferenceListPageView({
               <li key={conference.id}>
                 <div>
                   <strong>Conferência iniciada em {new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(conference.createdAt))}</strong>
-                  <span className={`status-badge status-${conference.status}`}>{conference.status === "processing" ? "Processamento iniciado" : conference.hasSourceFile ? "Aguardando processamento" : "Rascunho"}</span>
+                  <span className={`status-badge status-${conference.status}`}>{conference.status === "finalized" ? "Finalizada" : conference.status === "processing" ? "Processamento iniciado" : conference.hasSourceFile ? "Aguardando processamento" : "Rascunho"}</span>
                 </div>
                 <Link href={`/conferencias/${conference.id}`}>Abrir conferência</Link>
               </li>
@@ -62,6 +62,7 @@ export function ConferenceUploadPageView({
   procedureReview,
   manualTranscription,
   medicalRequest,
+  finalization,
   notice,
 }: {
   conference: ConferenceSummary;
@@ -70,6 +71,7 @@ export function ConferenceUploadPageView({
   procedureReview?: ReactNode;
   manualTranscription?: ReactNode;
   medicalRequest?: ReactNode;
+  finalization?: ReactNode;
   notice?: Notice;
 }) {
   const processing = conference.status === "processing";
@@ -112,6 +114,7 @@ export function ConferenceUploadPageView({
       {procedureReview}
       {manualTranscription}
       {medicalRequest}
+      {finalization}
     </main>
   );
 }
