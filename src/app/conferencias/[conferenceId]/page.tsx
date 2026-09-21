@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { addManualProcedureAction, addMedicalRequestItemAction, completeManualProcedureTranscriptionAction, finalizeConferenceAction, retryConferenceProcessingAction, reviewConferenceProcedureAction, uploadConferenceFileAction } from "@/features/conferences/conference-actions";
+import { addManualProcedureAction, addMedicalRequestItemAction, completeManualProcedureTranscriptionAction, createConferenceRevisionAction, finalizeConferenceAction, retryConferenceProcessingAction, reviewConferenceProcedureAction, uploadConferenceFileAction } from "@/features/conferences/conference-actions";
 import { prepareConferenceFinalization } from "@/features/conferences/conference-finalization";
 import { ConferenceFinalizationView } from "@/features/conferences/conference-finalization-page";
 import { compareMedicalRequest } from "@/features/conferences/medical-request-comparison";
@@ -29,7 +29,7 @@ export default async function ConferenceUploadPage({ params, searchParams }: {
   if (requestError) throw requestError;
   if (!conference || (conference.status !== "draft" && conference.status !== "processing" && conference.status !== "finalized")) notFound();
   if (conference.status === "finalized") {
-    return <main className="catalog-shell"><Link className="back-link" href="/conferencias">Voltar às conferências</Link><header className="catalog-header"><p className="eyebrow">Conferência finalizada</p><h1>Ficha LAC pronta</h1><p>A confirmação operacional foi registrada e a ficha permanece em área privada.</p></header>{conference.final_pdf_path ? <Link href={`/conferencias/${conferenceId}/ficha-lac`}>Baixar ficha LAC em PDF</Link> : null}</main>;
+    return <main className="catalog-shell"><Link className="back-link" href="/conferencias">Voltar às conferências</Link><header className="catalog-header"><p className="eyebrow">Conferência finalizada</p><h1>Ficha LAC pronta</h1><p>A confirmação operacional foi registrada e a ficha permanece em área privada.</p></header>{conference.final_pdf_path ? <Link href={`/conferencias/${conferenceId}/ficha-lac`}>Baixar ou reimprimir ficha LAC em PDF</Link> : null}<form action={createConferenceRevisionAction}><input type="hidden" name="conferenceId" value={conferenceId} /><button type="submit">Criar nova revisão</button></form></main>;
   }
   const selectableExams = (exams ?? []).map((exam) => ({ id: String(exam.id), name: exam.name, mnemonic: exam.mnemonic }));
   const manualTranscription = conference.extraction_result && typeof conference.extraction_result === "object" && "status" in conference.extraction_result && conference.extraction_result.status === "reading_unavailable"

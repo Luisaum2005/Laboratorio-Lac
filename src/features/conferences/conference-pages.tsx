@@ -6,6 +6,8 @@ export type ConferenceSummary = {
   status: "draft" | "processing" | "finalized";
   createdAt: string;
   hasSourceFile?: boolean;
+  patientName?: string | null;
+  revisionNumber?: number;
 };
 
 type Notice = { tone: "success" | "error"; message: string };
@@ -14,10 +16,12 @@ export function ConferenceListPageView({
   conferences,
   createDraftAction,
   notice,
+  patientSearch,
 }: {
   conferences: ConferenceSummary[];
   createDraftAction: () => Promise<void>;
   notice?: Notice;
+  patientSearch?: string;
 }) {
   return (
     <main className="catalog-shell">
@@ -35,6 +39,12 @@ export function ConferenceListPageView({
         <button type="submit">Nova conferência</button>
       </form>
 
+      <form method="get" className="governance-card">
+        <label htmlFor="patient-search">Buscar por paciente</label>
+        <input id="patient-search" name="patient" defaultValue={patientSearch ?? ""} />
+        <button type="submit">Pesquisar histórico</button>
+      </form>
+
       <section className="table-card" aria-labelledby="recent-conferences">
         <h2 id="recent-conferences">Conferências recentes</h2>
         {conferences.length === 0 ? <p className="catalog-count">Nenhuma conferência iniciada ainda.</p> : (
@@ -43,6 +53,8 @@ export function ConferenceListPageView({
               <li key={conference.id}>
                 <div>
                   <strong>Conferência iniciada em {new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(conference.createdAt))}</strong>
+                  {conference.patientName ? <span>Paciente: {conference.patientName}</span> : null}
+                  <span>Revisão {conference.revisionNumber ?? 1}</span>
                   <span className={`status-badge status-${conference.status}`}>{conference.status === "finalized" ? "Finalizada" : conference.status === "processing" ? "Processamento iniciado" : conference.hasSourceFile ? "Aguardando processamento" : "Rascunho"}</span>
                 </div>
                 <Link href={`/conferencias/${conference.id}`}>Abrir conferência</Link>
