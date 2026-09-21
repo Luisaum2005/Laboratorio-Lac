@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { runAdministrativeRetention } from "@/features/conferences/conference-retention-service";
 
 import { inviteAuthorizedEmail, revokeAuthorizedUser, type AuthorizedAccessGateway } from "./authorized-access";
 
@@ -90,4 +91,16 @@ export async function revokeAuthorizedUserAction(formData: FormData) {
     actorUserId: context.actorUserId,
     targetUserId: formText(formData, "userId"),
   }, context.gateway), "revoked");
+}
+
+export async function rerunRetentionAction() {
+  const context = await administrativeGateway();
+  if (!context) redirect("/catalogo?error=forbidden");
+  try {
+    await runAdministrativeRetention(context.actorUserId);
+    revalidatePath("/acessos");
+    redirect("/acessos?success=retention");
+  } catch {
+    redirect("/acessos?error=retention");
+  }
 }

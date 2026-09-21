@@ -6,6 +6,8 @@ type AccessAdministrationPageViewProps = {
   events: Array<{ id: string; action: "invited" | "revoked"; status: "pending" | "completed"; targetEmail: string; createdAt: string }>;
   inviteAction?: (formData: FormData) => Promise<void>;
   revokeAction?: (formData: FormData) => Promise<void>;
+  rerunRetentionAction?: () => Promise<void>;
+  retentionAudits?: Array<{ id: string; actorLabel: string; status: "pending" | "completed" | "failed"; reason: "retention_expired"; createdAt: string }>;
   notice?: { tone: "success" | "error"; message: string };
 };
 
@@ -15,6 +17,8 @@ export function AccessAdministrationPageView({
   events,
   inviteAction,
   revokeAction,
+  rerunRetentionAction,
+  retentionAudits = [],
   notice,
 }: AccessAdministrationPageViewProps) {
   return (
@@ -65,6 +69,24 @@ export function AccessAdministrationPageView({
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="table-card" aria-labelledby="retention-title">
+        <h2 id="retention-title">Retenção e auditoria</h2>
+        <p>Dados clínicos e arquivos vencidos são eliminados após 30 dias. A auditoria preserva somente data, responsável, status e motivo.</p>
+        <form action={rerunRetentionAction}>
+          <button type="submit">Reprocessar retenção agora</button>
+        </form>
+        {retentionAudits.length === 0 ? <p className="catalog-count">Nenhuma execução registrada.</p> : (
+          <ul className="audit-events">
+            {retentionAudits.map((event) => (
+              <li key={event.id}>
+                {event.status === "completed" ? "Expurgo concluído" : event.status === "failed" ? "Expurgo com falha" : "Expurgo pendente de retomada"} — {event.actorLabel}; motivo: retenção expirada
+                <time dateTime={event.createdAt}> — {new Date(event.createdAt).toLocaleString("pt-BR")}</time>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </main>
   );
