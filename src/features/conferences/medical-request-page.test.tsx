@@ -18,7 +18,10 @@ describe("pedido médico manual", () => {
 
     expect(screen.getByLabelText("Médico solicitante")).toBeRequired();
     expect(screen.getByLabelText("Texto do pedido")).toBeRequired();
-    expect(screen.getByLabelText("Exame do catálogo")).toBeRequired();
+    const examSelector = screen.getByLabelText("Exames do catálogo");
+    expect(examSelector).toBeRequired();
+    expect(examSelector).toHaveAttribute("multiple");
+    expect(screen.getByRole("button", { name: "Adicionar exames do pedido" })).toBeVisible();
     expect(screen.getByText("Hemograma solicitado").closest("li")).toHaveTextContent("Autorizado");
     expect(screen.getByText(/só é autorizado se constar como autorizado na guia Unimed/i)).toBeVisible();
   });

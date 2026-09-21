@@ -332,17 +332,21 @@ export async function addMedicalRequestItemAction(formData: FormData) {
   const conferenceId = formData.get("conferenceId");
   const doctorName = formData.get("doctorName");
   const rawText = formData.get("rawText");
-  const examId = formData.get("examId");
-  if (!isUuid(conferenceId) || !isExamId(examId) || typeof doctorName !== "string" || !doctorName.trim() || typeof rawText !== "string" || !rawText.trim()) {
+  const requestedExamIds = formData.getAll("examIds");
+  const examIds = [...new Set(requestedExamIds.filter(isExamId))];
+  if (!isUuid(conferenceId) || examIds.length === 0 || examIds.length !== requestedExamIds.length || typeof doctorName !== "string" || !doctorName.trim() || typeof rawText !== "string" || !rawText.trim()) {
     redirect(`/conferencias/${typeof conferenceId === "string" ? conferenceId : ""}?error=medical_request_invalid`);
   }
   const admin = createSupabaseAdminClient();
   const { data: conference } = await admin.from("conferences").select("id,status").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
   if (!conference || conference.status === "finalized") redirect("/conferencias?error=not_found");
-  const { data: exam } = await admin.from("exams").select("id").eq("id", examId).eq("active", true).maybeSingle();
-  if (!exam) redirect(`/conferencias/${conferenceId}?error=medical_request_invalid`);
+  const { data: exams, error: examsError } = await admin.from("exams").select("id").in("id", examIds).eq("active", true);
+  if (examsError || !exams || exams.length !== examIds.length) redirect(`/conferencias/${conferenceId}?error=medical_request_invalid`);
   const { error: conferenceError } = await admin.from("conferences").update({ doctor_name: doctorName.trim(), doctor_is_manual: true }).eq("id", conferenceId).eq("created_by", userId);
-  const { error: itemError } = await admin.from("conference_medical_request_items").upsert({ conference_id: conferenceId, exam_id: exam.id, raw_text: rawText.trim(), created_by: userId }, { onConflict: "conference_id,exam_id" });
+  const { error: itemError } = await admin.from("conference_medical_request_items").upsert(
+    exams.map((exam) => ({ conference_id: conferenceId, exam_id: exam.id, raw_text: rawText.trim(), created_by: userId })),
+    { onConflict: "conference_id,exam_id" },
+  );
   if (conferenceError || itemError) redirect(`/conferencias/${conferenceId}?error=medical_request_save_failed`);
   revalidatePath(`/conferencias/${conferenceId}`);
   redirect(`/conferencias/${conferenceId}?success=medical_request_saved`);

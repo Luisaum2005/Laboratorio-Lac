@@ -15,9 +15,12 @@ export function MedicalRequestView({ conferenceId, doctorName, exams, items, sav
       <input id="doctor-name" name="doctorName" defaultValue={doctorName ?? ""} required />
       <label htmlFor="request-raw-text">Texto do pedido</label>
       <input id="request-raw-text" name="rawText" required />
-      <label htmlFor="request-exam">Exame do catálogo</label>
-      <select id="request-exam" name="examId" required defaultValue=""><option value="">Selecione um exame</option>{exams.map((exam) => <option key={exam.id} value={exam.id}>{exam.name} ({exam.mnemonic})</option>)}</select>
-      <button type="submit">Adicionar exame do pedido</button>
+      <label htmlFor="request-exams">Exames do catálogo</label>
+      <p className="catalog-count">Selecione um ou mais exames. Use Ctrl (Windows) ou Cmd (Mac) para selecionar itens separados.</p>
+      <select id="request-exams" name="examIds" required multiple size={Math.min(Math.max(exams.length, 4), 10)}>
+        {exams.map((exam) => <option key={exam.id} value={exam.id}>{exam.name} ({exam.mnemonic})</option>)}
+      </select>
+      <button type="submit">Adicionar exames do pedido</button>
     </form>
     {comparisonBlocked ? <p className="notice notice-error">A comparação do pedido permanece bloqueada enquanto existir item da guia necessitando de revisão.</p> : <ul>{items.map((item) => <li key={item.id}><strong>{item.rawText}</strong> — {item.status === "authorized" ? "Autorizado" : "Não autorizado"}</li>)}</ul>}
   </section>;
