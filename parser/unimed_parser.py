@@ -7,7 +7,17 @@ from pdfminer.pdfparser import PDFSyntaxError
 
 
 PROCEDURE_PATTERN = re.compile(
-    r"(?P<code>\d{8})\s*-\s*(?P<description>.+?)\s+(?P<requested>\d+)\s+(?P<authorized>\d+)\s*$"
+    r"(?P<code>\d{8})(?:\s*-\s*|\s+(?=[A-Z]))(?P<description>.+?)\s+(?P<requested>\d+)\s+(?P<authorized>\d+)\s*$"
+)
+
+PROCEDURE_SECTION_START = re.compile(
+    r"dados\s+da\s+solicita|procedimentos\s+ou\s+itens(?:\s+assistenciais)?\s+solicitados|lembrete\s+de\s+solicit",
+    flags=re.IGNORECASE,
+)
+
+PROCEDURE_SECTION_END = re.compile(
+    r"dados\s+do\s+contratado\s+executante|dados\s+do\s+atendimento|dados\s+da\s+execu",
+    flags=re.IGNORECASE,
 )
 
 
@@ -37,36 +47,53 @@ def _metadata(text: str) -> dict[str, str | None]:
     }
 
 
+def _procedure_lines(page: str) -> list[str]:
+    lines: list[str] = []
+    in_section = False
+    for line in page.splitlines():
+        normalized = _normalize_for_matching(line)
+        if PROCEDURE_SECTION_START.search(normalized):
+            in_section = True
+        if in_section and PROCEDURE_SECTION_END.search(normalized):
+            break
+        if in_section:
+            lines.append(line)
+    return lines
+
+
+def _extract_procedures(text_pages: list[str]) -> list[dict]:
+    procedures: list[dict] = []
+    seen: set[tuple[str, int, int]] = set()
+    for page_number, page in enumerate(text_pages, start=1):
+        for line in _procedure_lines(page):
+            raw_text = line.strip()
+            match = PROCEDURE_PATTERN.search(_normalize_for_matching(raw_text))
+            if not match:
+                continue
+            requested_quantity = int(match.group("requested"))
+            authorized_quantity = int(match.group("authorized"))
+            key = (match.group("code"), requested_quantity, authorized_quantity)
+            if key in seen:
+                continue
+            seen.add(key)
+            procedure_raw_text = raw_text[raw_text.find(match.group("code")):]
+            procedures.append({
+                "raw_text": procedure_raw_text,
+                "page": page_number,
+                "code": match.group("code"),
+                "description": match.group("description").strip(" -"),
+                "requested_quantity": requested_quantity,
+                "authorized_quantity": authorized_quantity,
+                "is_authorized": authorized_quantity > 0,
+            })
+    return procedures
+
+
 def extract_unimed_text_pages(text_pages: list[str]) -> dict:
     if not any(page.strip() for page in text_pages):
         return {"status": "reading_unavailable", "reason": "text_unavailable"}
 
-    last_page = text_pages[-1]
-    normalized_last_page = _normalize_for_matching(last_page)
-    if not re.search(
-        r"procedimentos(?:\s+|-)+ou(?:\s+|-)+itens(?:\s+|-)+solicitados",
-        normalized_last_page,
-        flags=re.IGNORECASE,
-    ):
-        return {"status": "reading_unavailable", "reason": "unexpected_layout"}
-
-    procedures = []
-    for line in last_page.splitlines():
-        raw_text = line.strip()
-        match = PROCEDURE_PATTERN.search(_normalize_for_matching(raw_text))
-        if not match:
-            continue
-        procedure_raw_text = raw_text[raw_text.find(match.group("code")):]
-        authorized_quantity = int(match.group("authorized"))
-        procedures.append({
-            "raw_text": procedure_raw_text,
-            "page": len(text_pages),
-            "code": match.group("code"),
-            "description": match.group("description").strip(),
-            "requested_quantity": int(match.group("requested")),
-            "authorized_quantity": authorized_quantity,
-            "is_authorized": authorized_quantity > 0,
-        })
+    procedures = _extract_procedures(text_pages)
 
     if not procedures:
         return {"status": "reading_unavailable", "reason": "unexpected_layout"}

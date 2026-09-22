@@ -13,6 +13,8 @@ export type CatalogAlias = {
   normalizedAlias: string;
 };
 
+export type CatalogTussCode = { examId: string; code: string };
+
 export type ExplicitComposition = {
   packageExamId: string;
   componentExamId: string;
@@ -51,12 +53,13 @@ export function isProcedureReviewComplete(reviews: Array<Pick<ProcedureReview, "
 
 export function resolveExtractedProcedures(
   procedures: ExtractedProcedure[],
-  catalog: { aliases: CatalogAlias[]; compositions: ExplicitComposition[] },
+  catalog: { aliases: CatalogAlias[]; tussCodes: CatalogTussCode[]; compositions: ExplicitComposition[] },
 ): ProcedureReview[] {
   return procedures.map((procedure, sourceIndex) => {
     const normalizedText = normalizeProcedureText(procedure.description);
+    const matchingCodes = catalog.tussCodes.filter((entry) => entry.code === procedure.code);
     const matchingAliases = catalog.aliases.filter((alias) => alias.normalizedAlias === normalizedText);
-    const matchedExamId = matchingAliases.length === 1 ? matchingAliases[0].examId : null;
+    const matchedExamId = matchingCodes.length === 1 ? matchingCodes[0].examId : matchingAliases.length === 1 ? matchingAliases[0].examId : null;
 
     return {
       ...procedure,

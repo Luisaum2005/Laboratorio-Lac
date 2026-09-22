@@ -24,6 +24,13 @@ export function createProcedureReviewStoreGateway(supabase: SupabaseClient): Pro
         error: null,
       };
     },
+    listTussCodes: async () => {
+      const { data, error } = await supabase.from("exam_tuss_codes").select("tuss_code,exam_id");
+      return {
+        tussCodes: (data ?? []).map((entry) => ({ code: entry.tuss_code, examId: String(entry.exam_id) })),
+        error: error?.message ?? null,
+      };
+    },
     listCompositions: async () => {
       const { data, error } = await supabase.from("exam_compositions").select("package_exam_id,component_exam_id");
       return {

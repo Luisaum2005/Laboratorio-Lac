@@ -8,6 +8,7 @@ describe("persistência da revisão de procedimentos", () => {
     const gateway: ProcedureReviewStoreGateway = {
       countReviews: vi.fn().mockResolvedValue({ count: 0, error: null }),
       listAliases: vi.fn().mockResolvedValue({ aliases: [{ examId: "10", normalizedAlias: "hemograma completo" }], error: null }),
+      listTussCodes: vi.fn().mockResolvedValue({ tussCodes: [], error: null }),
       listCompositions: vi.fn().mockResolvedValue({ compositions: [], error: null }),
       saveInitialReviews,
     };

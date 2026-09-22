@@ -86,3 +86,32 @@ class UnimedParserTest(unittest.TestCase):
         ])
 
         self.assertEqual(result["status"], "ok")
+
+    def test_extracts_procedures_from_every_procedure_page_and_deduplicates_reminders(self):
+        result = extract_unimed_text_pages([
+            "Dados da Solicitacao / Procedimentos ou Itens Assistenciais Solicitados\n1 - 22 40304361 HEMOGRAMA COMPLETO 1 1\nDados do Contratado Executante",
+            "Dados da Solicitacao / Procedimentos ou Itens Assistenciais Solicitados\n2 - 22 40301583 COLESTEROL HDL 2 0\nDados do Contratado Executante",
+            "LEMBRETE DE SOLICITACAO\n40304361 - HEMOGRAMA COMPLETO 1 1\n40301583 - COLESTEROL HDL 2 0",
+        ])
+
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["procedures"], [
+            {
+                "raw_text": "40304361 HEMOGRAMA COMPLETO 1 1",
+                "page": 1,
+                "code": "40304361",
+                "description": "HEMOGRAMA COMPLETO",
+                "requested_quantity": 1,
+                "authorized_quantity": 1,
+                "is_authorized": True,
+            },
+            {
+                "raw_text": "40301583 COLESTEROL HDL 2 0",
+                "page": 2,
+                "code": "40301583",
+                "description": "COLESTEROL HDL",
+                "requested_quantity": 2,
+                "authorized_quantity": 0,
+                "is_authorized": False,
+            },
+        ])
