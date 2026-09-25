@@ -1,12 +1,12 @@
 import { CatalogPageView, type CatalogExam } from "@/features/catalog/catalog-page";
-import { createExamAction } from "@/features/catalog/catalog-actions";
+import { createExamAction, importMnemonicSpreadsheetAction } from "@/features/catalog/catalog-actions";
 import { catalogNotice } from "@/features/catalog/catalog-notices";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export default async function CatalogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ success?: string; error?: string }>;
+  searchParams: Promise<{ success?: string; error?: string; added?: string; updated?: string; unchanged?: string }>;
 }) {
   const query = await searchParams;
   const supabase = await createSupabaseServerClient();
@@ -30,6 +30,7 @@ export default async function CatalogPage({
       viewerRole={viewerRole}
       exams={exams}
       createExamAction={createExamAction}
+      importMnemonicSpreadsheetAction={importMnemonicSpreadsheetAction}
       notice={catalogNotice(query)}
     />
   );

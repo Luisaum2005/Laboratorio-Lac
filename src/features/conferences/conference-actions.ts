@@ -10,11 +10,12 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requestConferenceProcessing, startConferenceProcessing } from "./conference-upload";
 import { createProcedureReviewStoreGateway } from "./procedure-review-gateway";
 import { decideProcedureReview } from "./procedure-review-decision";
+import { findProcedureApprovalIssues } from "./procedure-approval";
 import { persistInitialProcedureReviews } from "./procedure-review-store";
 import { prepareManualProcedure } from "./manual-procedure";
 import { expandExplicitComposition, normalizeProcedureText } from "./procedure-review";
 import { compareMedicalRequest } from "./medical-request-comparison";
-import { prepareConferenceFinalization } from "./conference-finalization";
+import { prepareConferenceFinalization, resolveExtraApprovalSelection } from "./conference-finalization";
 import { createLacFormPdf } from "./lac-form-pdf";
 import { changedExamIds, createConferenceRevision } from "./conference-revision";
 
@@ -59,6 +60,10 @@ function isExamId(value: FormDataEntryValue | null): value is string {
   return typeof value === "string" && /^[1-9][0-9]*$/.test(value);
 }
 
+function isEditableConferenceStatus(status: string) {
+  return status === "draft" || status === "processing";
+}
+
 async function syncProcedureReviewCompletion(conferenceId: string, userId: string) {
   const admin = createSupabaseAdminClient();
   const { count, error: countError } = await admin.from("conference_procedure_reviews")
@@ -66,7 +71,7 @@ async function syncProcedureReviewCompletion(conferenceId: string, userId: strin
   if (countError) return countError.message;
   const { data, error } = await admin.from("conferences").update({
     procedure_review_completed_at: count === 0 ? new Date().toISOString() : null,
-  }).eq("id", conferenceId).eq("created_by", userId).select("id").maybeSingle();
+  }).eq("id", conferenceId).eq("created_by", userId).is("purged_at", null).in("status", ["draft", "processing"]).select("id").maybeSingle();
   return error?.message ?? (data ? null : "A conferência não está mais disponível.");
 }
 
@@ -100,12 +105,15 @@ async function dispatchConferenceProcessing(
     return { status: "awaiting_processing" as const, error: null };
   }
 
-  const { error } = await admin.from("conferences").update({
+  const extractedDoctorName = parserResult.metadata?.doctor_name?.trim() || null;
+  const { data: updated, error } = await admin.from("conferences").update({
     processing_requested_at: new Date().toISOString(),
     extraction_completed_at: new Date().toISOString(),
     extraction_result: parserResult,
     status: "processing",
-  }).eq("id", conferenceId).eq("created_by", userId);
+    ...(extractedDoctorName ? { doctor_name: extractedDoctorName, doctor_is_manual: false } : {}),
+  }).eq("id", conferenceId).eq("created_by", userId).is("purged_at", null).in("status", ["draft", "processing"]).select("id").maybeSingle();
+  if (!updated && !error) return { status: "processing" as const, error: "A conferência não está mais disponível." };
   if (error) return { status: "processing" as const, error: error.message };
 
   const persistence = await persistInitialProcedureReviews(
@@ -135,6 +143,72 @@ export async function createConferenceDraftAction() {
   if (error || !data) throw new Error("Não foi possível criar o rascunho da conferência.");
   revalidatePath("/conferencias");
   redirect(`/conferencias/${data.id}`);
+}
+
+export async function deleteConferenceAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  if (!isUuid(conferenceId)) redirect("/conferencias?error=not_found");
+
+  const admin = createSupabaseAdminClient();
+  const { data: conference, error: loadError } = await admin.from("conferences")
+    .select("id,status,source_file_path,final_pdf_path,purged_at")
+    .eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (loadError || !conference || conference.purged_at || !["draft", "processing", "finalized"].includes(conference.status)) {
+    redirect("/conferencias?error=not_found");
+  }
+
+  const runId = crypto.randomUUID();
+  const { error: auditStartError } = await admin.from("conference_retention_audits").upsert({
+    conference_id: conferenceId, run_id: runId, actor_user_id: userId,
+    actor_type: "operator", status: "pending", reason: "user_requested",
+  }, { onConflict: "conference_id" });
+  if (auditStartError) redirect("/conferencias?error=delete_failed");
+
+  try {
+    const sourcePaths = conference.source_file_path ? [conference.source_file_path] : [];
+    const finalPaths = conference.final_pdf_path ? [conference.final_pdf_path] : [];
+    if (sourcePaths.length) {
+      const { error } = await admin.storage.from(CONFERENCE_BUCKET).remove(sourcePaths);
+      if (error) throw error;
+    }
+    if (finalPaths.length) {
+      const { error } = await admin.storage.from(LAC_FORMS_BUCKET).remove(finalPaths);
+      if (error) throw error;
+    }
+
+    const { error: procedureError } = await admin.from("conference_procedure_reviews").delete().eq("conference_id", conferenceId);
+    if (procedureError) throw procedureError;
+    const { error: requestError } = await admin.from("conference_medical_request_items").delete().eq("conference_id", conferenceId);
+    if (requestError) throw requestError;
+    const { error: revisionsError } = await admin.from("conference_revision_changes")
+      .delete().or(`conference_id.eq.${conferenceId},parent_conference_id.eq.${conferenceId}`);
+    if (revisionsError) throw revisionsError;
+    const { error: childRevisionsError } = await admin.from("conferences")
+      .update({ parent_conference_id: null }).eq("parent_conference_id", conferenceId);
+    if (childRevisionsError) throw childRevisionsError;
+
+    const { data: scrubbed, error: scrubError } = await admin.from("conferences").update({
+      status: "purged", purged_at: new Date().toISOString(), purge_reason: "user_requested", purge_run_id: runId,
+      source_file_path: null, source_file_uploaded_at: null, processing_requested_at: null,
+      extraction_result: null, extraction_completed_at: null, doctor_name: null,
+      final_pdf_path: null, finalized_at: null, finalized_by: null, final_snapshot: null,
+      parent_conference_id: null,
+    }).eq("id", conferenceId).eq("created_by", userId).is("purged_at", null)
+      .in("status", ["draft", "processing", "finalized"]).select("id").maybeSingle();
+    if (scrubError || !scrubbed) throw scrubError ?? new Error("Conference no longer available");
+
+    const { error: auditError } = await admin.from("conference_retention_audits").update({ status: "completed" })
+      .eq("conference_id", conferenceId).eq("run_id", runId).eq("reason", "user_requested");
+    if (auditError) throw auditError;
+  } catch {
+    await admin.from("conference_retention_audits").update({ status: "failed" })
+      .eq("conference_id", conferenceId).eq("run_id", runId).eq("reason", "user_requested");
+    redirect("/conferencias?error=delete_failed");
+  }
+
+  revalidatePath("/conferencias");
+  redirect("/conferencias?success=deleted");
 }
 
 export async function uploadConferenceFileAction(formData: FormData) {
@@ -225,7 +299,7 @@ export async function reviewConferenceProcedureAction(formData: FormData) {
 
   const { data: conference, error: conferenceError } = await admin.from("conferences")
     .select("id,status").eq("id", review.conference_id).eq("created_by", userId).maybeSingle();
-  if (conferenceError || !conference || conference.status === "finalized") redirect("/conferencias?error=not_found");
+  if (conferenceError || !conference || !isEditableConferenceStatus(conference.status)) redirect("/conferencias?error=not_found");
 
   let selectedExamId: string | null = null;
   let compositions: Array<{ packageExamId: string; componentExamId: string }> = [];
@@ -268,6 +342,44 @@ export async function reviewConferenceProcedureAction(formData: FormData) {
   redirect(`/conferencias/${conference.id}?success=review_updated`);
 }
 
+export async function approveConferenceProceduresAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  if (!isUuid(conferenceId)) redirect("/conferencias?error=not_found");
+
+  const admin = createSupabaseAdminClient();
+  const { data: conference, error: conferenceError } = await admin.from("conferences")
+    .select("id,status").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (conferenceError || !conference || !isEditableConferenceStatus(conference.status)) redirect("/conferencias?error=not_found");
+
+  const { data: rows, error: reviewsError } = await admin.from("conference_procedure_reviews")
+    .select("id,procedure_description,raw_text,source_page,procedure_code,requested_quantity,authorized_quantity,is_authorized,resolution,matched_exam_id,resolved_exam_id,entry_origin")
+    .eq("conference_id", conference.id).order("source_index");
+  if (reviewsError || !rows || rows.length === 0) redirect(`/conferencias/${conference.id}?error=review_approval_failed`);
+
+  const issues = findProcedureApprovalIssues(rows.map((review) => ({
+    id: String(review.id), rawText: review.raw_text, page: review.source_page, code: review.procedure_code,
+    description: review.procedure_description, requestedQuantity: review.requested_quantity,
+    authorizedQuantity: review.authorized_quantity, isAuthorized: review.is_authorized,
+    resolution: review.resolution, matchedExamId: review.matched_exam_id === null ? null : String(review.matched_exam_id),
+    resolvedExamId: review.resolved_exam_id === null ? null : String(review.resolved_exam_id), entryOrigin: review.entry_origin,
+  })));
+  if (issues.length > 0) redirect(`/conferencias/${conference.id}?error=review_approval_blocked`);
+
+  const { error: updateError } = await admin.from("conference_procedure_reviews").update({
+    resolution: "confirmed",
+    reviewed_by: userId,
+    reviewed_at: new Date().toISOString(),
+  }).eq("conference_id", conference.id).eq("resolution", "auto_matched");
+  if (updateError) redirect(`/conferencias/${conference.id}?error=review_approval_failed`);
+
+  const completionError = await syncProcedureReviewCompletion(String(conference.id), userId);
+  if (completionError) redirect(`/conferencias/${conference.id}?error=review_approval_failed`);
+
+  revalidatePath(`/conferencias/${conference.id}`);
+  redirect(`/conferencias/${conference.id}?success=review_approved`);
+}
+
 export async function addManualProcedureAction(formData: FormData) {
   const userId = await currentOperatorId();
   const conferenceId = formData.get("conferenceId");
@@ -284,7 +396,7 @@ export async function addManualProcedureAction(formData: FormData) {
   const admin = createSupabaseAdminClient();
   const { data: conference } = await admin.from("conferences")
     .select("id,status,extraction_result").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
-  if (!conference || conference.status === "finalized" || !isParserResult(conference.extraction_result) || conference.extraction_result.status !== "reading_unavailable") {
+  if (!conference || !isEditableConferenceStatus(conference.status) || !isParserResult(conference.extraction_result) || conference.extraction_result.status !== "reading_unavailable") {
     redirect(`/conferencias/${conferenceId}?error=manual_unavailable`);
   }
   const { data: exam } = await admin.from("exams").select("id,name").eq("id", prepared.procedure.examId).eq("active", true).maybeSingle();
@@ -315,11 +427,11 @@ export async function completeManualProcedureTranscriptionAction(formData: FormD
   const admin = createSupabaseAdminClient();
   const { data: conference } = await admin.from("conferences").select("id,status,extraction_result")
     .eq("id", conferenceId).eq("created_by", userId).maybeSingle();
-  if (!conference || conference.status === "finalized" || !isParserResult(conference.extraction_result) || conference.extraction_result.status !== "reading_unavailable") {
+  if (!conference || !isEditableConferenceStatus(conference.status) || !isParserResult(conference.extraction_result) || conference.extraction_result.status !== "reading_unavailable") {
     redirect(`/conferencias/${conferenceId}?error=manual_unavailable`);
   }
   const { data: updated } = await admin.from("conferences").update({ manual_transcription_completed_at: new Date().toISOString() })
-    .eq("id", conferenceId).eq("created_by", userId).select("id").maybeSingle();
+    .eq("id", conferenceId).eq("created_by", userId).is("purged_at", null).in("status", ["draft", "processing"]).select("id").maybeSingle();
   if (!updated) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
   const completionError = await syncProcedureReviewCompletion(conferenceId, userId);
   if (completionError) redirect(`/conferencias/${conferenceId}?error=manual_save_failed`);
@@ -334,17 +446,22 @@ export async function addMedicalRequestItemAction(formData: FormData) {
   const rawText = formData.get("rawText");
   const requestedExamIds = formData.getAll("examIds");
   const examIds = [...new Set(requestedExamIds.filter(isExamId))];
-  if (!isUuid(conferenceId) || examIds.length === 0 || examIds.length !== requestedExamIds.length || typeof doctorName !== "string" || !doctorName.trim() || typeof rawText !== "string" || !rawText.trim()) {
+  if (!isUuid(conferenceId) || examIds.length === 0 || examIds.length !== requestedExamIds.length
+    || (doctorName !== null && typeof doctorName !== "string") || (rawText !== null && typeof rawText !== "string")) {
     redirect(`/conferencias/${typeof conferenceId === "string" ? conferenceId : ""}?error=medical_request_invalid`);
   }
   const admin = createSupabaseAdminClient();
   const { data: conference } = await admin.from("conferences").select("id,status").eq("id", conferenceId).eq("created_by", userId).maybeSingle();
-  if (!conference || conference.status === "finalized") redirect("/conferencias?error=not_found");
-  const { data: exams, error: examsError } = await admin.from("exams").select("id").in("id", examIds).eq("active", true);
+  if (!conference || !isEditableConferenceStatus(conference.status)) redirect("/conferencias?error=not_found");
+  const { data: exams, error: examsError } = await admin.from("exams").select("id,name").in("id", examIds).eq("active", true);
   if (examsError || !exams || exams.length !== examIds.length) redirect(`/conferencias/${conferenceId}?error=medical_request_invalid`);
-  const { error: conferenceError } = await admin.from("conferences").update({ doctor_name: doctorName.trim(), doctor_is_manual: true }).eq("id", conferenceId).eq("created_by", userId);
+  const trimmedDoctorName = typeof doctorName === "string" ? doctorName.trim() : "";
+  const { error: conferenceError } = trimmedDoctorName
+    ? await admin.from("conferences").update({ doctor_name: trimmedDoctorName, doctor_is_manual: true }).eq("id", conferenceId).eq("created_by", userId).is("purged_at", null).in("status", ["draft", "processing"])
+    : { error: null };
+  const enteredRawText = typeof rawText === "string" ? rawText.trim() : "";
   const { error: itemError } = await admin.from("conference_medical_request_items").upsert(
-    exams.map((exam) => ({ conference_id: conferenceId, exam_id: exam.id, raw_text: rawText.trim(), created_by: userId })),
+    exams.map((exam) => ({ conference_id: conferenceId, exam_id: exam.id, raw_text: enteredRawText || exam.name, created_by: userId })),
     { onConflict: "conference_id,exam_id" },
   );
   if (conferenceError || itemError) redirect(`/conferencias/${conferenceId}?error=medical_request_save_failed`);
@@ -352,10 +469,30 @@ export async function addMedicalRequestItemAction(formData: FormData) {
   redirect(`/conferencias/${conferenceId}?success=medical_request_saved`);
 }
 
+export async function removeMedicalRequestItemAction(formData: FormData) {
+  const userId = await currentOperatorId();
+  const conferenceId = formData.get("conferenceId");
+  const itemId = formData.get("itemId");
+  if (!isUuid(conferenceId) || !isUuid(itemId)) {
+    redirect(`/conferencias/${typeof conferenceId === "string" ? conferenceId : ""}?error=medical_request_invalid`);
+  }
+
+  const admin = createSupabaseAdminClient();
+  const { data: conference } = await admin.from("conferences").select("id,status")
+    .eq("id", conferenceId).eq("created_by", userId).maybeSingle();
+  if (!conference || !isEditableConferenceStatus(conference.status)) redirect("/conferencias?error=not_found");
+
+  const { data: removed, error } = await admin.from("conference_medical_request_items")
+    .delete().eq("id", itemId).eq("conference_id", conferenceId).select("id").maybeSingle();
+  if (error || !removed) redirect(`/conferencias/${conferenceId}?error=medical_request_save_failed`);
+
+  revalidatePath(`/conferencias/${conferenceId}`);
+  redirect(`/conferencias/${conferenceId}?success=medical_request_removed`);
+}
+
 function finalizationError(reason: string) {
   const errors: Record<string, string> = {
     pending_guide_review: "finalization_pending_review",
-    medical_request_incomplete: "finalization_medical_request",
     not_authorized_request: "finalization_not_authorized",
     confirmation_required: "finalization_confirmation_required",
   };
@@ -379,7 +516,7 @@ export async function finalizeConferenceAction(formData: FormData) {
     admin.from("conference_medical_request_items").select("id,exam_id,raw_text").eq("conference_id", conferenceId),
     admin.from("exams").select("id,name,mnemonic").eq("active", true),
   ]);
-  if (!conference || conference.status === "finalized") redirect(`/conferencias/${conferenceId}?error=finalization_unavailable`);
+  if (!conference || !isEditableConferenceStatus(conference.status)) redirect(`/conferencias/${conferenceId}?error=finalization_unavailable`);
   const examsById = new Map((exams ?? []).map((exam) => [String(exam.id), { examId: String(exam.id), name: exam.name, mnemonic: exam.mnemonic }]));
   const comparison = compareMedicalRequest((requestItems ?? []).map((item) => ({ examId: String(item.exam_id), rawText: item.raw_text })), (reviews ?? []).map((review) => ({ expandedExamIds: review.expanded_exam_ids?.map(String) ?? [], isAuthorized: review.is_authorized, resolution: review.resolution })));
   const request = comparison.flatMap((item) => {
@@ -389,10 +526,13 @@ export async function finalizeConferenceAction(formData: FormData) {
   const requestExamIds = new Set(request.map((item) => item.examId));
   const extraIds = [...new Set((reviews ?? []).flatMap((review) => review.is_authorized && review.resolution !== "needs_review" && review.resolution !== "excluded" ? review.expanded_exam_ids?.map(String) ?? [] : []))].filter((id) => !requestExamIds.has(id));
   const extras = extraIds.flatMap((id) => examsById.get(id) ? [examsById.get(id)!] : []);
-  const selectedExtraExamIds = formData.getAll("selectedExtraExamIds").filter((value): value is string => typeof value === "string" && extraIds.includes(value));
+  const selectedExtraExamIds = resolveExtraApprovalSelection({
+    mode: formData.get("extrasApprovalMode"),
+    submittedExamIds: formData.getAll("selectedExtraExamIds"),
+    authorizedExtras: extras,
+  });
   const finalization = prepareConferenceFinalization({
     confirmationAccepted: formData.get("confirmationAccepted") === "yes",
-    doctorName: conference.doctor_name,
     hasPendingGuideReview: (reviews ?? []).some((review) => review.resolution === "needs_review"),
     requestItems: request,
     authorizedExtras: extras,
@@ -404,7 +544,7 @@ export async function finalizeConferenceAction(formData: FormData) {
   const divergences = request.filter((item) => item.status === "not_authorized").map(({ status: _status, ...item }) => item);
   const selectedExtras = extras.filter((item) => selectedExtraExamIds.includes(item.examId));
   const pdf = await createLacFormPdf({
-    patientName: metadata.patient_name ?? null, doctorName: conference.doctor_name!,
+    patientName: metadata.patient_name ?? null, doctorName: conference.doctor_name ?? metadata.doctor_name ?? "Não informado",
     guideNumber: metadata.guide_number ?? null, password: metadata.password ?? null,
     passwordValidUntil: metadata.password_valid_until ?? null, authorizationDate: metadata.authorization_date ?? null,
     requestDate: metadata.request_date ?? null, released: finalization.released.filter((item) => item.origin === "medical_request"), authorizedExtras: selectedExtras, divergences,
@@ -415,7 +555,7 @@ export async function finalizeConferenceAction(formData: FormData) {
   const snapshot = { metadata, released: finalization.released, authorizedExtras: selectedExtras, divergences };
   const { data: updated, error: updateError } = await admin.from("conferences").update({
     status: "finalized", finalized_at: new Date().toISOString(), finalized_by: userId, final_pdf_path: objectPath, final_snapshot: snapshot,
-  }).eq("id", conferenceId).eq("created_by", userId).eq("status", conference.status).select("id").maybeSingle();
+  }).eq("id", conferenceId).eq("created_by", userId).eq("status", conference.status).is("purged_at", null).select("id").maybeSingle();
   if (updateError || !updated) {
     await admin.storage.from(LAC_FORMS_BUCKET).remove([objectPath]);
     redirect(`/conferencias/${conferenceId}?error=finalization_failed`);

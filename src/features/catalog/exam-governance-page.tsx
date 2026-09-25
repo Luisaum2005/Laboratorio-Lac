@@ -10,12 +10,15 @@ type ExamGovernancePageViewProps = {
   viewerRole: "operator" | "admin";
   exam: ExamSummary & { active: boolean };
   aliases: Array<{ id: string; alias: string }>;
+  tussCodes: string[];
   components: ExamSummary[];
   availableComponents: ExamSummary[];
   updateExamAction?: (formData: FormData) => Promise<void>;
   deactivateExamAction?: (formData: FormData) => Promise<void>;
   approveAliasAction?: (formData: FormData) => Promise<void>;
   revokeAliasAction?: (formData: FormData) => Promise<void>;
+  addTussCodeAction?: (formData: FormData) => Promise<void>;
+  revokeTussCodeAction?: (formData: FormData) => Promise<void>;
   addCompositionAction?: (formData: FormData) => Promise<void>;
   removeCompositionAction?: (formData: FormData) => Promise<void>;
   notice?: { tone: "success" | "error"; message: string };
@@ -25,12 +28,15 @@ export function ExamGovernancePageView({
   viewerRole,
   exam,
   aliases,
+  tussCodes,
   components,
   availableComponents,
   updateExamAction,
   deactivateExamAction,
   approveAliasAction,
   revokeAliasAction,
+  addTussCodeAction,
+  revokeTussCodeAction,
   addCompositionAction,
   removeCompositionAction,
   notice,
@@ -66,6 +72,29 @@ export function ExamGovernancePageView({
           <button type="submit">Desativar exame</button>
         </form>
       ) : null}
+
+      <fieldset className="governance-card">
+        <legend>Códigos TUSS</legend>
+        <p>Os códigos associados são usados para preencher a guia final automaticamente.</p>
+        <ul>
+          {tussCodes.map((code) => (
+            <li key={code}>
+              <code>{code}</code>
+              {viewerRole === "admin" ? <form action={revokeTussCodeAction}>
+                <input type="hidden" name="examId" value={exam.id} />
+                <input type="hidden" name="tussCode" value={code} />
+                <button type="submit" aria-label={`Revogar TUSS ${code}`}>Revogar</button>
+              </form> : null}
+            </li>
+          ))}
+        </ul>
+        {viewerRole === "admin" ? <form action={addTussCodeAction}>
+          <input type="hidden" name="examId" value={exam.id} />
+          <label htmlFor="new-tuss-code">Novo código TUSS</label>
+          <input id="new-tuss-code" name="tussCode" inputMode="numeric" pattern="[0-9]{8}" maxLength={8} required />
+          <button type="submit">Associar código TUSS</button>
+        </form> : null}
+      </fieldset>
 
       <fieldset className="governance-card">
         <legend>Aliases aprovados</legend>

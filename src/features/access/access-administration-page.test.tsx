@@ -14,6 +14,8 @@ describe("administração de acessos", () => {
           { id: "user-9", email: "pessoa@exemplo.com", role: "operator" },
         ]}
         events={[{ id: "1", action: "invited", status: "completed", targetEmail: "pessoa@exemplo.com", createdAt: "2026-09-14T10:00:00Z" }]}
+        retentionAudits={[{ id: "delete-1", actorLabel: "pessoa@exemplo.com", status: "completed", reason: "user_requested", createdAt: "2026-09-14T10:00:00Z" }]}
+        pilotMetrics={{ total: 3, finalized: 2, inProgress: 1, guideRead: 3, manualDoctorCorrections: 1, completionRatePercent: 67, medianFinalizationHours: 4 }}
       />,
     );
 
@@ -23,5 +25,9 @@ describe("administração de acessos", () => {
     expect(screen.getByRole("button", { name: "Revogar pessoa@exemplo.com" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Revogar segundo-admin@exemplo.com" })).toBeVisible();
     expect(screen.getByText("Convite enviado para pessoa@exemplo.com")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Indicadores do piloto" })).toBeVisible();
+    expect(screen.getByText(/Exclusão concluída — pessoa@exemplo.com; motivo: solicitação do usuário/)).toBeVisible();
+    expect(screen.getByText("2 (67%)")).toBeVisible();
+    expect(screen.getByText("4 h")).toBeVisible();
   });
 });

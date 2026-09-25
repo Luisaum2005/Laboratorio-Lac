@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import type { PilotMetrics } from "@/features/conferences/pilot-metrics";
+
 type AccessAdministrationPageViewProps = {
   currentUserId: string;
   users: Array<{ id: string; email: string; role: "admin" | "operator" }>;
@@ -7,7 +9,8 @@ type AccessAdministrationPageViewProps = {
   inviteAction?: (formData: FormData) => Promise<void>;
   revokeAction?: (formData: FormData) => Promise<void>;
   rerunRetentionAction?: () => Promise<void>;
-  retentionAudits?: Array<{ id: string; actorLabel: string; status: "pending" | "completed" | "failed"; reason: "retention_expired"; createdAt: string }>;
+  retentionAudits?: Array<{ id: string; actorLabel: string; status: "pending" | "completed" | "failed"; reason: "retention_expired" | "user_requested"; createdAt: string }>;
+  pilotMetrics?: PilotMetrics;
   notice?: { tone: "success" | "error"; message: string };
 };
 
@@ -19,6 +22,7 @@ export function AccessAdministrationPageView({
   revokeAction,
   rerunRetentionAction,
   retentionAudits = [],
+  pilotMetrics,
   notice,
 }: AccessAdministrationPageViewProps) {
   return (
@@ -72,8 +76,20 @@ export function AccessAdministrationPageView({
       </section>
 
       <section className="table-card" aria-labelledby="retention-title">
+        {pilotMetrics ? <section aria-labelledby="pilot-metrics-title">
+          <h2 id="pilot-metrics-title">Indicadores do piloto</h2>
+          <p>Resumo agregado das conferências dos últimos 30 dias. Nenhum dado clínico é exibido nesta área.</p>
+          <dl className="pilot-metrics-grid">
+            <div><dt>Conferências</dt><dd>{pilotMetrics.total}</dd></div>
+            <div><dt>Finalizadas</dt><dd>{pilotMetrics.finalized} ({pilotMetrics.completionRatePercent}%)</dd></div>
+            <div><dt>Em andamento</dt><dd>{pilotMetrics.inProgress}</dd></div>
+            <div><dt>Guias lidas</dt><dd>{pilotMetrics.guideRead}</dd></div>
+            <div><dt>Correções manuais do médico</dt><dd>{pilotMetrics.manualDoctorCorrections}</dd></div>
+            <div><dt>Tempo mediano até finalizar</dt><dd>{pilotMetrics.medianFinalizationHours === null ? "Ainda não disponível" : `${pilotMetrics.medianFinalizationHours} h`}</dd></div>
+          </dl>
+        </section> : null}
         <h2 id="retention-title">Retenção e auditoria</h2>
-        <p>Dados clínicos e arquivos vencidos são eliminados após 30 dias. A auditoria preserva somente data, responsável, status e motivo.</p>
+        <p>Dados clínicos e arquivos vencidos são eliminados após 30 dias. Expurgos e exclusões solicitadas ficam registrados sem conteúdo clínico.</p>
         <form action={rerunRetentionAction}>
           <button type="submit">Reprocessar retenção agora</button>
         </form>
@@ -81,7 +97,9 @@ export function AccessAdministrationPageView({
           <ul className="audit-events">
             {retentionAudits.map((event) => (
               <li key={event.id}>
-                {event.status === "completed" ? "Expurgo concluído" : event.status === "failed" ? "Expurgo com falha" : "Expurgo pendente de retomada"} — {event.actorLabel}; motivo: retenção expirada
+                {event.reason === "retention_expired"
+                  ? `${event.status === "completed" ? "Expurgo concluído" : event.status === "failed" ? "Expurgo com falha" : "Expurgo pendente de retomada"} — ${event.actorLabel}; motivo: retenção expirada`
+                  : `${event.status === "completed" ? "Exclusão concluída" : event.status === "failed" ? "Exclusão com falha" : "Exclusão pendente de retomada"} — ${event.actorLabel}; motivo: solicitação do usuário`}
                 <time dateTime={event.createdAt}> — {new Date(event.createdAt).toLocaleString("pt-BR")}</time>
               </li>
             ))}

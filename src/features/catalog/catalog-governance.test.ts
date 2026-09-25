@@ -2,10 +2,12 @@ import { describe, expect, it, vi } from "vitest";
 
 import {
   addComposition,
+  addTussCode,
   approveAlias,
   createCanonicalExam,
   deactivateCanonicalExam,
   revokeAlias,
+  revokeTussCode,
   removeComposition,
   type CatalogGovernanceGateway,
   updateCanonicalExam,
@@ -110,5 +112,35 @@ describe("governança do catálogo", () => {
       packageExamId: "42",
       componentExamId: "7",
     });
+  });
+
+  it("adiciona somente códigos TUSS válidos ao exame", async () => {
+    const insertTussCode = vi.fn().mockResolvedValue({ error: null });
+    const gateway = { insertTussCode } as unknown as CatalogGovernanceGateway;
+
+    const result = await addTussCode({ examId: "42", code: " 40304361 " }, gateway);
+
+    expect(result).toEqual({ status: "success" });
+    expect(insertTussCode).toHaveBeenCalledWith("42", "40304361");
+  });
+
+  it("recusa código TUSS fora do formato de oito dígitos", async () => {
+    const insertTussCode = vi.fn();
+    const gateway = { insertTussCode } as unknown as CatalogGovernanceGateway;
+
+    const result = await addTussCode({ examId: "42", code: "TUSS" }, gateway);
+
+    expect(result).toEqual({ status: "invalid", message: "Informe um código TUSS com oito dígitos." });
+    expect(insertTussCode).not.toHaveBeenCalled();
+  });
+
+  it("revoga somente o código TUSS selecionado", async () => {
+    const deleteTussCode = vi.fn().mockResolvedValue({ error: null });
+    const gateway = { deleteTussCode } as unknown as CatalogGovernanceGateway;
+
+    const result = await revokeTussCode("40304361", gateway);
+
+    expect(result).toEqual({ status: "success" });
+    expect(deleteTussCode).toHaveBeenCalledWith("40304361");
   });
 });

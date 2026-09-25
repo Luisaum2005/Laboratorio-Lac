@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { addManualProcedureAction, addMedicalRequestItemAction, completeManualProcedureTranscriptionAction, createConferenceRevisionAction, finalizeConferenceAction, retryConferenceProcessingAction, reviewConferenceProcedureAction, uploadConferenceFileAction } from "@/features/conferences/conference-actions";
+import { addManualProcedureAction, addMedicalRequestItemAction, approveConferenceProceduresAction, completeManualProcedureTranscriptionAction, createConferenceRevisionAction, finalizeConferenceAction, removeMedicalRequestItemAction, retryConferenceProcessingAction, reviewConferenceProcedureAction, uploadConferenceFileAction } from "@/features/conferences/conference-actions";
 import { prepareConferenceFinalization } from "@/features/conferences/conference-finalization";
 import { ConferenceFinalizationView } from "@/features/conferences/conference-finalization-page";
 import { compareMedicalRequest } from "@/features/conferences/medical-request-comparison";
 import { MedicalRequestView } from "@/features/conferences/medical-request-page";
 import { ManualProcedureTranscriptionView } from "@/features/conferences/manual-procedure-page";
 import { conferenceNotice } from "@/features/conferences/conference-notices";
-import { ConferenceUploadPageView } from "@/features/conferences/conference-pages";
+import { ConferenceUploadPageView, type GuideMetadata } from "@/features/conferences/conference-pages";
 import { ConferenceProcedureReviewView } from "@/features/conferences/procedure-review-page";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -29,10 +29,15 @@ export default async function ConferenceUploadPage({ params, searchParams }: {
   if (requestError) throw requestError;
   if (!conference || (conference.status !== "draft" && conference.status !== "processing" && conference.status !== "finalized")) notFound();
   if (conference.status === "finalized") {
-    return <main className="catalog-shell"><Link className="back-link" href="/conferencias">Voltar às conferências</Link><header className="catalog-header"><p className="eyebrow">Conferência finalizada</p><h1>Ficha LAC pronta</h1><p>A confirmação operacional foi registrada e a ficha permanece em área privada.</p></header>{conference.final_pdf_path ? <Link href={`/conferencias/${conferenceId}/ficha-lac`}>Baixar ou reimprimir ficha LAC em PDF</Link> : null}<form action={createConferenceRevisionAction}><input type="hidden" name="conferenceId" value={conferenceId} /><button type="submit">Criar nova revisão</button></form></main>;
+    return <main className="catalog-shell"><Link className="back-link" href="/conferencias">Voltar às conferências</Link><header className="catalog-header"><p className="eyebrow">Conferência finalizada</p><h1>Ficha LAC pronta</h1><p>A confirmação operacional foi registrada e a ficha permanece em área privada.</p></header><div className="finalized-conference-actions">{conference.final_pdf_path ? <Link className="action-link action-link--download" href={`/conferencias/${conferenceId}/ficha-lac`}>Baixar ou reimprimir ficha LAC em PDF</Link> : null}<form action={createConferenceRevisionAction}><input type="hidden" name="conferenceId" value={conferenceId} /><button className="button-secondary" type="submit">Criar nova revisão</button></form></div></main>;
   }
   const selectableExams = (exams ?? []).map((exam) => ({ id: String(exam.id), name: exam.name, mnemonic: exam.mnemonic }));
-  const manualTranscription = conference.extraction_result && typeof conference.extraction_result === "object" && "status" in conference.extraction_result && conference.extraction_result.status === "reading_unavailable"
+  const extractionResult = conference.extraction_result && typeof conference.extraction_result === "object" ? conference.extraction_result : null;
+  const guideMetadata: GuideMetadata | undefined = extractionResult && "metadata" in extractionResult && extractionResult.metadata && typeof extractionResult.metadata === "object"
+    ? extractionResult.metadata as GuideMetadata
+    : undefined;
+  const hasExtractionResult = Boolean(extractionResult && "status" in extractionResult);
+  const manualTranscription = extractionResult && "status" in extractionResult && extractionResult.status === "reading_unavailable"
     ? <ManualProcedureTranscriptionView conferenceId={String(conference.id)} exams={selectableExams} saveAction={addManualProcedureAction} completeAction={completeManualProcedureTranscriptionAction} />
     : null;
   const comparisonBlocked = (reviews ?? []).some((review) => review.resolution === "needs_review");
@@ -46,11 +51,15 @@ export default async function ConferenceUploadPage({ params, searchParams }: {
   const requestExamIds = new Set(finalizationRequest.map((item) => item.examId));
   const extraIds = [...new Set((reviews ?? []).flatMap((review) => review.is_authorized && review.resolution !== "needs_review" && review.resolution !== "excluded" ? review.expanded_exam_ids?.map(String) ?? [] : []))].filter((id) => !requestExamIds.has(id));
   const finalizationExtras = extraIds.flatMap((id) => examsById.get(id) ? [examsById.get(id)!] : []);
-  const finalization = prepareConferenceFinalization({ confirmationAccepted: true, doctorName: conference.doctor_name, hasPendingGuideReview: comparisonBlocked, requestItems: finalizationRequest, authorizedExtras: finalizationExtras, selectedExtraExamIds: [] });
-  const finalizationBlockedReason = finalization.status === "blocked" && finalization.reason !== "confirmation_required" ? ({ pending_guide_review: "Há procedimento da guia necessitando revisão.", medical_request_incomplete: "Informe o médico e ao menos um exame do pedido médico.", not_authorized_request: "Há exame do pedido médico não autorizado.", confirmation_required: null } as const)[finalization.reason] : null;
-  const medicalRequest = <MedicalRequestView conferenceId={String(conference.id)} doctorName={conference.doctor_name} exams={selectableExams} saveAction={addMedicalRequestItemAction} comparisonBlocked={comparisonBlocked} items={(requestItems ?? []).map((item) => ({ id: String(item.id), rawText: item.raw_text, examId: String(item.exam_id), status: comparison.find((entry) => entry.examId === String(item.exam_id))?.status ?? "not_authorized" }))} />;
-  return <ConferenceUploadPageView conference={{ id: String(conference.id), status: conference.status, createdAt: conference.created_at, hasSourceFile: Boolean(conference.source_file_path) }} uploadAction={uploadConferenceFileAction} retryProcessingAction={retryConferenceProcessingAction} notice={conferenceNotice(query)} procedureReview={
+  const finalization = prepareConferenceFinalization({ confirmationAccepted: true, hasPendingGuideReview: comparisonBlocked, requestItems: finalizationRequest, authorizedExtras: finalizationExtras, selectedExtraExamIds: [] });
+  const finalizationBlockedReason = finalization.status === "blocked" && finalization.reason !== "confirmation_required" ? ({ pending_guide_review: "Há procedimento da guia necessitando revisão.", not_authorized_request: "Há exame do pedido médico não autorizado.", confirmation_required: null } as const)[finalization.reason] : null;
+  const medicalRequest = <MedicalRequestView conferenceId={String(conference.id)} doctorName={conference.doctor_name} exams={selectableExams} saveAction={addMedicalRequestItemAction} removeAction={removeMedicalRequestItemAction} comparisonBlocked={comparisonBlocked} items={(requestItems ?? []).flatMap((item) => {
+    const exam = selectableExams.find((candidate) => candidate.id === String(item.exam_id));
+    return exam ? [{ id: String(item.id), rawText: item.raw_text, examId: exam.id, examName: exam.name, mnemonic: exam.mnemonic, status: comparison.find((entry) => entry.examId === exam.id)?.status ?? "not_authorized" as const }] : [];
+  })} />;
+  return <ConferenceUploadPageView conference={{ id: String(conference.id), status: conference.status, createdAt: conference.created_at, hasSourceFile: Boolean(conference.source_file_path) }} uploadAction={uploadConferenceFileAction} retryProcessingAction={retryConferenceProcessingAction} hasExtractionResult={hasExtractionResult} guideMetadata={guideMetadata} notice={conferenceNotice(query)} procedureReview={
     <ConferenceProcedureReviewView
+      conferenceId={String(conference.id)}
       reviews={(reviews ?? []).map((review) => ({
         id: String(review.id), rawText: review.raw_text, page: review.source_page, code: review.procedure_code,
         description: review.procedure_description, requestedQuantity: review.requested_quantity,
@@ -60,7 +69,8 @@ export default async function ConferenceUploadPage({ params, searchParams }: {
       }))}
       exams={selectableExams}
       reviewAction={reviewConferenceProcedureAction}
+      approveAction={approveConferenceProceduresAction}
       blocked={comparisonBlocked}
     />
-  } manualTranscription={manualTranscription} medicalRequest={medicalRequest} finalization={<ConferenceFinalizationView conferenceId={String(conference.id)} blockedReason={finalizationBlockedReason} extras={finalizationExtras} finalizeAction={finalizeConferenceAction} />} />;
+  } manualTranscription={manualTranscription} medicalRequest={medicalRequest} finalization={<ConferenceFinalizationView conferenceId={String(conference.id)} blockedReason={finalizationBlockedReason} requestItems={finalizationRequest} extras={finalizationExtras} finalizeAction={finalizeConferenceAction} />} />;
 }

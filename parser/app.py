@@ -3,6 +3,7 @@ import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from tempfile import NamedTemporaryFile
+from urllib.parse import urlsplit, urlunsplit
 from urllib.request import urlopen
 
 from unimed_parser import extract_unimed_guide
@@ -11,8 +12,18 @@ from unimed_parser import extract_unimed_guide
 MAX_PDF_BYTES = 10 * 1024 * 1024
 
 
+def container_reachable_source_url(source_url: str) -> str:
+    parsed = urlsplit(source_url)
+    if parsed.hostname not in {"127.0.0.1", "localhost", "::1"}:
+        return source_url
+
+    netloc = f"host.docker.internal:{parsed.port}" if parsed.port else "host.docker.internal"
+    return urlunsplit(parsed._replace(netloc=netloc))
+
+
 def download_pdf(source_url: str) -> bytes:
-    with urlopen(source_url, timeout=20) as response:
+    reachable_url = container_reachable_source_url(source_url)
+    with urlopen(reachable_url, timeout=20) as response:
         content = response.read(MAX_PDF_BYTES + 1)
     if len(content) > MAX_PDF_BYTES or not content.startswith(b"%PDF-"):
         raise ValueError("Arquivo de origem inválido.")

@@ -41,9 +41,9 @@ function createRetentionGateway(actorUserId: string | null): RetentionGateway {
   const admin = createSupabaseAdminClient();
   return {
     findExpired: async (cutoff) => {
-      const candidates: Array<{ id: string; source_file_path: string | null; final_pdf_path: string | null; purged_at: string | null }> = [];
+      const candidates: Array<{ id: string; source_file_path: string | null; final_pdf_path: string | null; purged_at: string | null; purge_reason: string | null }> = [];
       for (let offset = 0; ; offset += 1000) {
-        const { data, error } = await admin.from("conferences").select("id,source_file_path,final_pdf_path,purged_at")
+        const { data, error } = await admin.from("conferences").select("id,source_file_path,final_pdf_path,purged_at,purge_reason")
           .lt("created_at", cutoff).range(offset, offset + 999);
         if (error) throw error;
         candidates.push(...(data ?? []));
@@ -57,6 +57,7 @@ function createRetentionGateway(actorUserId: string | null): RetentionGateway {
         for (const audit of audits ?? []) if (audit.status === "completed") completedIds.add(String(audit.conference_id));
       }
       return candidates.flatMap((conference) => {
+        if (conference.purge_reason === "user_requested") return [];
         if (conference.purged_at && completedIds.has(String(conference.id))) return [];
         return [{ id: String(conference.id), sourceFilePath: conference.source_file_path, finalPdfPath: conference.final_pdf_path, alreadyPurged: Boolean(conference.purged_at) }];
       });

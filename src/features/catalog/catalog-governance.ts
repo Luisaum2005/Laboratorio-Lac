@@ -15,6 +15,8 @@ export type CatalogGovernanceGateway = {
     input: { alias: string; normalizedAlias: string },
   ): Promise<{ error: string | null }>;
   deleteAlias(aliasId: string): Promise<{ error: string | null }>;
+  insertTussCode(examId: string, code: string): Promise<{ error: string | null }>;
+  deleteTussCode(code: string): Promise<{ error: string | null }>;
   insertComposition(input: {
     packageExamId: string;
     componentExamId: string;
@@ -94,6 +96,37 @@ export async function revokeAlias(
   const { error } = await gateway.deleteAlias(id);
   return error
     ? { status: "error", message: "Não foi possível revogar o alias." }
+    : { status: "success" };
+}
+
+export async function addTussCode(
+  input: { examId: string; code: string },
+  gateway: CatalogGovernanceGateway,
+): Promise<CatalogMutationResult> {
+  const examId = input.examId.trim();
+  const code = input.code.trim();
+  if (!examId || !/^\d{8}$/.test(code)) {
+    return { status: "invalid", message: "Informe um código TUSS com oito dígitos." };
+  }
+
+  const { error } = await gateway.insertTussCode(examId, code);
+  return error
+    ? { status: "error", message: "Não foi possível adicionar o código TUSS." }
+    : { status: "success" };
+}
+
+export async function revokeTussCode(
+  code: string,
+  gateway: CatalogGovernanceGateway,
+): Promise<CatalogMutationResult> {
+  const normalizedCode = code.trim();
+  if (!/^\d{8}$/.test(normalizedCode)) {
+    return { status: "invalid", message: "Informe um código TUSS válido." };
+  }
+
+  const { error } = await gateway.deleteTussCode(normalizedCode);
+  return error
+    ? { status: "error", message: "Não foi possível revogar o código TUSS." }
     : { status: "success" };
 }
 

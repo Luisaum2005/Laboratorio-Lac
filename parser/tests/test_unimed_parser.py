@@ -8,6 +8,42 @@ FIXTURE = Path(__file__).parent / "fixtures" / "unimed-guide-anonymized.pdf"
 
 
 class UnimedParserTest(unittest.TestCase):
+    def test_extracts_real_sp_sadt_metadata_when_labels_are_split_and_accents_are_corrupted(self):
+        result = extract_unimed_text_pages([
+            """GUIA DE SERVIÇO PROFISSIONAL / SERVIÇO AUXILIAR DE DIAGNÓSTICO E TERAPIA - SP/SADT 17484905
+4 - Data da Autoriza��o 5 - Senha 6 - Data de Validade da Senha 7 - N�mero da Guia Atribu�do pela Operadora
+08/10/2025 1322752 08/10/2026 17484905
+10 - Nome
+JULIA PEREIRA DOS SANTOS
+13 - C�digo na Operadora 14 - Nome do Contratado
+451491 PATRICIA ARANTES ROSA
+15 - Nome do Profissional Solicitante 16 - Conselho Profissional 17 - N�mero no Conselho 18 - UF
+06 121296 SP
+21 - Car�ter do Atendimento 22 - Data da Solicita��o 23 - Indica��o Cl�nica
+1 08/10/2025 ACOMPANHAMENTO CARDIOLOGICO
+Dados da Solicita��o / Procedimentos ou Itens Assistenciais Solicitados
+1 - 22 40304361 HEMOGRAMA COM CONTAGEM DE PLAQUETAS OU FRACOES (E 1 1
+Dados do Contratado Executante""",
+        ])
+
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["metadata"], {
+            "patient_name": "JULIA PEREIRA DOS SANTOS",
+            "doctor_name": "PATRICIA ARANTES ROSA",
+            "doctor_name_source": "contracted_provider",
+            "guide_number": "17484905",
+            "password": "1322752",
+            "password_valid_until": "08/10/2026",
+            "authorization_date": "08/10/2025",
+            "request_date": "08/10/2025",
+            "clinical_indication": "ACOMPANHAMENTO CARDIOLOGICO",
+            "beneficiary_card_number": None,
+            "beneficiary_card_valid_until": None,
+            "professional_council": "06",
+            "professional_council_number": "121296",
+            "professional_council_state": "SP",
+        })
+
     def test_extracts_metadata_and_all_procedures_from_anonymized_unimed_guide(self):
         result = extract_unimed_guide(FIXTURE)
 
@@ -15,11 +51,18 @@ class UnimedParserTest(unittest.TestCase):
         self.assertEqual(result["metadata"], {
         "patient_name": "PACIENTE ANONIMIZADO",
         "doctor_name": "MEDICO DE TESTE",
+        "doctor_name_source": "professional",
         "guide_number": "12345678",
         "password": "7654321",
         "password_valid_until": "31/12/2026",
         "authorization_date": "08/10/2025",
         "request_date": "08/10/2025",
+        "clinical_indication": None,
+        "beneficiary_card_number": None,
+        "beneficiary_card_valid_until": None,
+        "professional_council": None,
+        "professional_council_number": None,
+        "professional_council_state": None,
         })
         self.assertEqual(result["procedures"], [
         {

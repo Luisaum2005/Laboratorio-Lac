@@ -1,27 +1,32 @@
 import type { SelectableExam } from "./manual-procedure-page";
+import { MedicalRequestForm } from "./medical-request-form";
 
-export function MedicalRequestView({ conferenceId, doctorName, exams, items, saveAction, comparisonBlocked }: {
+export function MedicalRequestView({ conferenceId, doctorName, exams, items, saveAction, removeAction, comparisonBlocked }: {
   conferenceId: string; doctorName: string | null; exams: SelectableExam[];
-  items: Array<{ id: string; rawText: string; examId: string; status: "authorized" | "not_authorized" }>;
+  items: Array<{ id: string; rawText: string; examId: string; examName: string; mnemonic: string; status: "authorized" | "not_authorized" }>;
   saveAction: (formData: FormData) => Promise<void>;
+  removeAction: (formData: FormData) => Promise<void>;
   comparisonBlocked: boolean;
 }) {
-  return <section className="governance-card procedure-review-card" aria-labelledby="medical-request-heading">
-    <h2 id="medical-request-heading">Pedido médico</h2>
-    <p>Preenchimento manual. Um exame só é autorizado se constar como autorizado na guia Unimed.</p>
-    <form action={saveAction}>
-      <input type="hidden" name="conferenceId" value={conferenceId} />
-      <label htmlFor="doctor-name">Médico solicitante</label>
-      <input id="doctor-name" name="doctorName" defaultValue={doctorName ?? ""} required />
-      <label htmlFor="request-raw-text">Texto do pedido</label>
-      <input id="request-raw-text" name="rawText" required />
-      <label htmlFor="request-exams">Exames do catálogo</label>
-      <p className="catalog-count">Selecione um ou mais exames. Use Ctrl (Windows) ou Cmd (Mac) para selecionar itens separados.</p>
-      <select id="request-exams" name="examIds" required multiple size={Math.min(Math.max(exams.length, 4), 10)}>
-        {exams.map((exam) => <option key={exam.id} value={exam.id}>{exam.name} ({exam.mnemonic})</option>)}
-      </select>
-      <button type="submit">Adicionar exames do pedido</button>
-    </form>
-    {comparisonBlocked ? <p className="notice notice-error">A comparação do pedido permanece bloqueada enquanto existir item da guia necessitando de revisão.</p> : <ul>{items.map((item) => <li key={item.id}><strong>{item.rawText}</strong> — {item.status === "authorized" ? "Autorizado" : "Não autorizado"}</li>)}</ul>}
+  return <section className="governance-card procedure-review-card medical-request-card" aria-labelledby="medical-request-heading">
+    <div className="section-heading">
+      <span className="step-marker" aria-hidden="true">02</span>
+      <div>
+        <p className="section-kicker">Pedido do paciente · opcional</p>
+        <h2 id="medical-request-heading">Pedido médico e exames</h2>
+        <p className="section-description">Se houver pedido médico, registre os dados e selecione os exames. Sem pedido, siga direto para a próxima etapa.</p>
+      </div>
+    </div>
+    <p className="notice notice-info"><strong>Importante:</strong> um exame só é autorizado se constar como autorizado na guia Unimed.</p>
+    <MedicalRequestForm conferenceId={conferenceId} doctorName={doctorName} exams={exams} saveAction={saveAction} />
+    {comparisonBlocked ? <p className="notice notice-error">A comparação permanece pendente enquanto existir item da guia necessitando de revisão.</p> : null}
+    {items.length > 0 ? <ul aria-label="Exames do pedido médico">{items.map((item) => <li key={item.id}>
+      <div className="request-exam-summary">
+        <div className="request-exam-title"><strong>{item.examName}</strong><code>{item.mnemonic}</code></div>
+        <span className={`status-badge ${item.status === "authorized" ? "status-authorized" : "status-unauthorized"}`}>{item.status === "authorized" ? "Autorizado pela guia" : "Não autorizado pela guia"}</span>
+        <span className="request-raw-text">{item.rawText}</span>
+      </div>
+      <form action={removeAction} className="request-remove-form"><input type="hidden" name="conferenceId" value={conferenceId} /><input type="hidden" name="itemId" value={item.id} /><button className="button-quiet" type="submit" aria-label={`Remover ${item.examName} do pedido`}>Remover</button></form>
+    </li>)}</ul> : null}
   </section>;
 }

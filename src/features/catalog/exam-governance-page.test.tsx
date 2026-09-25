@@ -10,6 +10,7 @@ describe("manutenção de exame", () => {
         viewerRole="operator"
         exam={{ id: "42", name: "HEMOGRAMA COMPLETO", mnemonic: "HM", active: true }}
         aliases={[{ id: "9", alias: "Hemograma" }]}
+        tussCodes={[]}
         components={[{ id: "7", name: "CONTAGEM DE PLAQUETAS", mnemonic: "PLAQ" }]}
         availableComponents={[]}
       />,
@@ -26,6 +27,7 @@ describe("manutenção de exame", () => {
         viewerRole="admin"
         exam={{ id: "42", name: "HEMOGRAMA COMPLETO", mnemonic: "HM", active: true }}
         aliases={[{ id: "9", alias: "Hemograma" }]}
+        tussCodes={["40304361"]}
         components={[{ id: "7", name: "CONTAGEM DE PLAQUETAS", mnemonic: "PLAQ" }]}
         availableComponents={[
           { id: "8", name: "CONTAGEM DE RETICULÓCITOS", mnemonic: "RETIC" },
@@ -37,6 +39,11 @@ describe("manutenção de exame", () => {
     expect(screen.getByRole("group", { name: "Editar exame" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Salvar exame" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Desativar exame" })).toBeVisible();
+    expect(screen.getByRole("group", { name: "Códigos TUSS" })).toBeVisible();
+    expect(screen.getByText("40304361")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Revogar TUSS 40304361" })).toBeVisible();
+    expect(screen.getByRole("textbox", { name: "Novo código TUSS" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Associar código TUSS" })).toBeVisible();
     expect(screen.getByRole("group", { name: "Aliases aprovados" })).toBeVisible();
     expect(screen.getByText("Hemograma")).toBeVisible();
     expect(screen.getByRole("button", { name: "Revogar Hemograma" })).toBeVisible();

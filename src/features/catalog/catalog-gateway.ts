@@ -31,6 +31,18 @@ export function createCatalogGovernanceGateway(supabase: SupabaseClient): Catalo
       const { data, error } = await supabase.from("exam_aliases").delete().eq("id", aliasId).select("id");
       return affectedRecordResult(data, error);
     },
+    insertTussCode: async (examId, code) => {
+      const { error } = await supabase.from("exam_tuss_codes").insert({
+        exam_id: examId,
+        tuss_code: code,
+      });
+      return { error: error?.message ?? null };
+    },
+    deleteTussCode: async (code) => {
+      const { data, error } = await supabase.from("exam_tuss_codes").delete()
+        .eq("tuss_code", code).select("tuss_code");
+      return affectedRecordResult(data, error);
+    },
     insertComposition: async (input) => {
       const { error } = await supabase.from("exam_compositions").insert({
         package_exam_id: input.packageExamId,

@@ -1,4 +1,4 @@
-import { createConferenceDraftAction } from "@/features/conferences/conference-actions";
+import { createConferenceDraftAction, createConferenceRevisionAction, deleteConferenceAction } from "@/features/conferences/conference-actions";
 import { conferenceNotice } from "@/features/conferences/conference-notices";
 import { ConferenceListPageView, type ConferenceSummary } from "@/features/conferences/conference-pages";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -14,9 +14,9 @@ export default async function ConferencesPage({ searchParams }: { searchParams: 
     if (patientSearch && !patientName?.toLocaleLowerCase("pt-BR").includes(patientSearch)) return [];
     return (
     conference.status === "draft" || conference.status === "processing" || conference.status === "finalized"
-      ? [{ id: String(conference.id), status: conference.status, createdAt: conference.created_at, hasSourceFile: Boolean(conference.source_file_path), patientName, revisionNumber: conference.revision_number }]
+      ? [{ id: String(conference.id), status: conference.status, createdAt: conference.created_at, hasSourceFile: Boolean(conference.source_file_path), hasExtractionResult: Boolean(conference.extraction_result && typeof conference.extraction_result === "object" && "status" in conference.extraction_result), patientName, revisionNumber: conference.revision_number }]
       : []
     );
   });
-  return <ConferenceListPageView conferences={conferences} createDraftAction={createConferenceDraftAction} notice={conferenceNotice(query)} patientSearch={query.patient} />;
+  return <ConferenceListPageView conferences={conferences} createDraftAction={createConferenceDraftAction} deleteAction={deleteConferenceAction} revisionAction={createConferenceRevisionAction} notice={conferenceNotice(query)} patientSearch={query.patient} />;
 }
