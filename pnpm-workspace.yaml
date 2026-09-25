@@ -6,3 +6,5 @@ minimumReleaseAgeExclude:
   - '@supabase/ssr@0.12.7'
   - '@supabase/storage-js@2.116.0'
   - '@supabase/supabase-js@2.116.0'
+allowBuilds:
+  esbuild: true

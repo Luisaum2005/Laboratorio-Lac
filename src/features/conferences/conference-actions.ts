@@ -18,6 +18,7 @@ import { compareMedicalRequest } from "./medical-request-comparison";
 import { prepareConferenceFinalization, resolveExtraApprovalSelection } from "./conference-finalization";
 import { createLacFormPdf } from "./lac-form-pdf";
 import { changedExamIds, createConferenceRevision } from "./conference-revision";
+import { canDeleteConference } from "./conference-deletion";
 
 const CONFERENCE_BUCKET = "unimed-guides";
 const LAC_FORMS_BUCKET = "lac-forms";
@@ -152,9 +153,9 @@ export async function deleteConferenceAction(formData: FormData) {
 
   const admin = createSupabaseAdminClient();
   const { data: conference, error: loadError } = await admin.from("conferences")
-    .select("id,status,source_file_path,final_pdf_path,purged_at")
+    .select("id,source_file_path,final_pdf_path,purged_at")
     .eq("id", conferenceId).eq("created_by", userId).maybeSingle();
-  if (loadError || !conference || conference.purged_at || !["draft", "processing", "finalized"].includes(conference.status)) {
+  if (loadError || !conference || !canDeleteConference({ purgedAt: conference.purged_at })) {
     redirect("/conferencias?error=not_found");
   }
 
@@ -194,8 +195,7 @@ export async function deleteConferenceAction(formData: FormData) {
       extraction_result: null, extraction_completed_at: null, doctor_name: null,
       final_pdf_path: null, finalized_at: null, finalized_by: null, final_snapshot: null,
       parent_conference_id: null,
-    }).eq("id", conferenceId).eq("created_by", userId).is("purged_at", null)
-      .in("status", ["draft", "processing", "finalized"]).select("id").maybeSingle();
+    }).eq("id", conferenceId).eq("created_by", userId).is("purged_at", null).select("id").maybeSingle();
     if (scrubError || !scrubbed) throw scrubError ?? new Error("Conference no longer available");
 
     const { error: auditError } = await admin.from("conference_retention_audits").update({ status: "completed" })
